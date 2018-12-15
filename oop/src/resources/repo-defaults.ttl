@@ -6,6 +6,9 @@
 @prefix sr: <http://www.openrdf.org/config/repository/sail#>.
 @prefix sail: <http://www.openrdf.org/config/sail#>.
 @prefix owlim: <http://www.ontotext.com/trree/owlim#>.
+@prefix prop: <http://nhom06/property>.
+@prefix model: <http://nhom06/model>.
+@prefix rel: <http://nhom06/relationship>.
 
 [] a rep:Repository ;
 #    rep:repositoryID "" ;

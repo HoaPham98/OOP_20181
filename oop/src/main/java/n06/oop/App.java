@@ -1,7 +1,6 @@
 package n06.oop;
 
 import n06.oop.database.ConnectionManager;
-import n06.oop.model.BaseModel;
 import n06.oop.model.Country;
 import n06.oop.model.Source;
 import org.cyberborean.rdfbeans.RDFBeanManager;
@@ -20,15 +19,17 @@ public class App
     public static void main( String args[] )
     {
         System.out.println( "Hello World!" );
-        Source source = new Source("http://google.com", "2018-12-11");
+        Source source1 = new Source("http://google.com", "2018-12-11");
+        Source source2 = new Source("http://facebook.com", "2018-12-14");
         List<Source> sourceList = new ArrayList<>();
-        sourceList.add(source);
-        BaseModel country = new BaseModel();
-        country.setId("COUNTRY_001");
+        sourceList.add(source1);
+        sourceList.add(source2);
+        Country country = new Country();
+        country.setId("COUNTRY_1");
         country.setName("Viet Nam");
         country.setDescription("Asean_country");
         country.setSources(sourceList);
-//        country.setIsoCode("Vi");
+        country.setIsoCode("Vi");
 
         try (RepositoryConnection con = ConnectionManager.getConnection()) {
             RDFBeanManager manager = new RDFBeanManager(con);

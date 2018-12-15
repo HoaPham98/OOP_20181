@@ -3,12 +3,10 @@ package n06.oop.model;
 import n06.oop.database.Setting;
 import org.cyberborean.rdfbeans.annotations.RDF;
 import org.cyberborean.rdfbeans.annotations.RDFBean;
-import org.cyberborean.rdfbeans.annotations.RDFContainer;
 import org.cyberborean.rdfbeans.annotations.RDFSubject;
 
 import java.util.List;
 
-@RDFBean(Setting.PEEFIX_MODEL)
 public class BaseModel {
 	protected String id;
 	protected String name;
@@ -25,7 +23,7 @@ public class BaseModel {
 		this.id = id;
 	}
 
-	@RDF(Setting.PREFIX_PROPERTY + "/name")
+	@RDF(value = Setting.PREFIX_PROPERTY + ":name")
 	public String getName() {
 		return name;
 	}
@@ -34,7 +32,7 @@ public class BaseModel {
 		this.name = name;
 	}
 
-	@RDF(Setting.PREFIX_PROPERTY + "/description")
+	@RDF(value = Setting.PREFIX_PROPERTY + ":description")
 	public String getDescription() {
 		return description;
 	}
@@ -43,12 +41,16 @@ public class BaseModel {
 		this.description = description;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + "/sources")
+	@RDF(value = Setting.PREFIX_PROPERTY + ":sources")
 	public List<Source> getSources() {
 		return sources;
 	}
 
 	public void setSources(List<Source> sources) {
+		for (int i=0; i< sources.size(); i++) {
+			Source source = sources.get(i);
+			source.setId(this.id + "_" + i);
+		}
 		this.sources = sources;
 	}
 }

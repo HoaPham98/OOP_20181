@@ -31,6 +31,9 @@ public class ConnectionManager {
     private static Repository repository;
 
 
+    /**
+     *  Thiết lập kết nối tới database
+     */
     static {
         try {
             // Instantiate a local repository manager and initialize it
