@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PersonGenerator extends BaseGenerator {
+public class PersonGenerator extends BaseGenerator<Person> {
 
     public PersonGenerator() {
         super();
@@ -38,13 +38,7 @@ public class PersonGenerator extends BaseGenerator {
                 sources.add(source);
                 person.setSources(sources);
 
-                ModelBuilder builder = new ModelBuilder();
-                Model model = builder
-                        .subject(Entity.NAMESPACE + person.getId())
-                        .add(RDF.TYPE, Entity.PERSON)
-                        .add(Property.NAME, name)
-                        .add(Property.DESCRIPTION, person.getDescription())
-                        .build();
+                Model model = createModel(person);
 
                 conn.add(model);
             }
@@ -55,6 +49,17 @@ public class PersonGenerator extends BaseGenerator {
         } catch (Throwable t) {
             conn.rollback();
         }
+    }
+
+    @Override
+    public Model createModel(Person item) {
+        Model model = builder.subject("model:" + item.getId())
+                .add(RDF.TYPE, Entity.PERSON)
+                .add(Property.NAME, item.getName())
+                .add(Property.DESCRIPTION, item.getDescription())
+                .build();
+
+        return model;
     }
 
     @Override
