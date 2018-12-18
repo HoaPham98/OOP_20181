@@ -1,14 +1,11 @@
 package n06.oop;
 
 import n06.oop.database.ConnectionManager;
-import n06.oop.model.Country;
-import n06.oop.model.Source;
-import org.cyberborean.rdfbeans.RDFBeanManager;
-import org.cyberborean.rdfbeans.exceptions.RDFBeanException;
+import n06.oop.model.generator.PersonGenerator;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.TupleQuery;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Hello world!
@@ -16,27 +13,31 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String args[] )
+    public static void main(String[] args)
     {
         System.out.println( "Hello World!" );
-        Source source1 = new Source("http://google.com", "2018-12-11");
-        Source source2 = new Source("http://facebook.com", "2018-12-14");
-        List<Source> sourceList = new ArrayList<>();
-        sourceList.add(source1);
-        sourceList.add(source2);
-        Country country = new Country();
-        country.setId("COUNTRY_1");
-        country.setName("Viet Nam");
-        country.setDescription("Asean_country");
-        country.setSources(sourceList);
-        country.setIsoCode("Vi");
+        PersonGenerator generator = new PersonGenerator();
 
-        try (RepositoryConnection con = ConnectionManager.getConnection()) {
-            RDFBeanManager manager = new RDFBeanManager(con);
-            // ... do something with RDFBeanManager
-            manager.add(country);
-        } catch (RDFBeanException e) {
-            e.printStackTrace();
+        generator.generateData(100);
+
+        RepositoryConnection conn = ConnectionManager.getConnection();
+        String queryString = "PREFIX model: <http://nhom06/model#>";
+        queryString += "SELECT ?s ?n \n";
+        queryString += "WHERE { \n";
+        queryString += "    model:PERSON_1 ?s ?n \n";
+        queryString += "}";
+        TupleQuery query = conn.prepareTupleQuery(queryString);
+        // A QueryResult is also an AutoCloseable resource, so make sure it gets
+        // closed when done.
+        try (TupleQueryResult result = query.evaluate()) {
+            // we just iterate over all solutions in the result...
+            while (result.hasNext()) {
+                BindingSet solution = result.next();
+                // ... and print out the value of the variable bindings
+                // for ?s and ?n
+                System.out.println("?s = " + solution.getValue("s"));
+                System.out.println("?n = " + solution.getValue("n"));
+            }
         }
     }
 }

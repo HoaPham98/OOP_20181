@@ -1,20 +1,19 @@
-package n06.oop.model;
+package n06.oop.model.entities;
 
 import n06.oop.database.Setting;
 import org.cyberborean.rdfbeans.annotations.RDF;
-import org.cyberborean.rdfbeans.annotations.RDFBean;
 import org.cyberborean.rdfbeans.annotations.RDFSubject;
 
 import java.util.List;
 
-public class BaseModel {
+public class BaseEntity {
 	protected String id;
 	protected String name;
 	protected String description;
 	protected List<Source> sources;
 
 
-	@RDFSubject(prefix = Setting.PEEFIX_MODEL + "#")
+	@RDFSubject(prefix = Setting.PEEFIX_MODEL)
 	public String getId() {
 		return id;
 	}
@@ -23,7 +22,7 @@ public class BaseModel {
 		this.id = id;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + ":name")
+	@RDF(value = Setting.PREFIX_PROPERTY + "name")
 	public String getName() {
 		return name;
 	}
@@ -32,7 +31,7 @@ public class BaseModel {
 		this.name = name;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + ":description")
+	@RDF(value = Setting.PREFIX_PROPERTY + "description")
 	public String getDescription() {
 		return description;
 	}
@@ -41,7 +40,7 @@ public class BaseModel {
 		this.description = description;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + ":sources")
+	@RDF(value = Setting.PREFIX_PROPERTY + "sources")
 	public List<Source> getSources() {
 		return sources;
 	}
@@ -52,5 +51,9 @@ public class BaseModel {
 			source.setId(this.id + "_" + i);
 		}
 		this.sources = sources;
+	}
+
+	public String getType() {
+		return null;
 	}
 }

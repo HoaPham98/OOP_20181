@@ -1,4 +1,4 @@
-package n06.oop.model;
+package n06.oop.model.entities;
 
 import n06.oop.database.Setting;
 import org.cyberborean.rdfbeans.annotations.RDF;
@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@RDFBean(Setting.PREFIX_PROPERTY + ":sources")
+@RDFBean(Setting.PREFIX_SOURCE)
 public class Source {
 	
 	final static String DATE_FORMAT = "dd-MM-yyyy";
@@ -35,7 +35,7 @@ public class Source {
 		setDate(date);
 	}
 
-	@RDFSubject(prefix = Setting.PREFIX_PROPERTY + "/source#")
+	@RDFSubject(prefix = Setting.PREFIX_SOURCE)
 	public String getId() {
 		return id;
 	}
@@ -44,7 +44,7 @@ public class Source {
 		this.id = id;
 	}
 
-	@RDF(Setting.PREFIX_PROPERTY + "/source:link")
+	@RDF(Setting.PREFIX_PROPERTY + "link")
 	public String getLink() {
 		return link;
 	}
@@ -53,7 +53,7 @@ public class Source {
 		this.link = link;
 	}
 
-	@RDF(Setting.PREFIX_PROPERTY + "/source:date")
+	@RDF(Setting.PREFIX_PROPERTY + "date")
 	public Date getDate() {
 		return date;
 	}

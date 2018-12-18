@@ -1,0 +1,168 @@
+﻿Thủ Dầu Một, Bình Dương
+Long Mỹ, Hậu Giang
+Quận Thanh Khê, Đà Nẵng
+Quận Hải An, Hải Phòng
+Phan Thiết, Bình Thuận
+Phúc Yên, Vĩnh Phúc
+Biên Hòa, Đồng Nai
+Qui Nhơn, Bình Định
+Kiến Tường, Long An
+Quận Liên Chiểu, Đà Nẵng
+Buôn Ma Thuột, Đắk Lắk
+Quận 11, Hồ Chí Minh
+Từ Sơn, Bắc Ninh
+Quận 2, Hồ Chí Minh
+Sa Đéc, Đồng Tháp
+Quận 9, Hồ Chí Minh
+Thị Xã Buôn Hồ, Đắk Lắk
+Quận Hải Châu, Đà Nẵng
+Trà Vinh, Trà Vinh
+Quận Thốt Nốt, Cần Thơ
+Cửa Lò, Nghệ An
+Thuận An, Bình Dương
+Nghĩa Lộ, Yên Bái
+Quận Đống Đa, Hà Nội
+Quận Long Biên, Hà Nội
+Hồng Ngự, Đồng Tháp
+Thành Phố Bắc Kạn, Bắc Kạn
+Tân Uyên, Bình Dương
+Tân Châu, An Giang
+Ngã Năm, Sóc Trăng
+Quận Lê Chân, Hải Phòng
+Thị Xã Mường Lay, Điện Biên
+Hạ Long, Quảng Ninh
+Bắc Giang, Bắc Giang
+Duyên Hải, Trà Vinh
+Đà Lạt, Lâm Đồng
+Giá Rai, Bạc Liêu
+Phước Long, Bình Phước
+Quận Hà Đông, Hà Nội
+Bạc Liêu, Bạc Liêu
+An Khê, Gia Lai
+Bắc Ninh, Bắc Ninh
+Chí Linh, Hải Dương
+Quận 7, Hồ Chí Minh
+Nam Định, Nam Định
+Quảng Trị, Quảng Trị
+Quận Đồ Sơn, Hải Phòng
+Lào Cai, Lào Cai
+Ba Đồn, Quảng Bình
+Sông Công, Thái Nguyên
+Tuy Hoà, Phú Yên
+Cao Bằng, Cao Bằng
+Phan Rang-Tháp Chàm, Ninh Thuận
+Gia Nghĩa, Đắk Nông
+Thái Hoà, Nghệ An
+Quận Sơn Trà, Đà Nẵng
+Long Xuyên, An Giang
+Bình Long, Bình Phước
+Quận Phú Nhuận, Hồ Chí Minh
+Quận Ngũ Hành Sơn, Đà Nẵng
+Quận Tân Bình, Hồ Chí Minh
+Việt Trì, Phú Thọ
+Quận Cái Răng, Cần Thơ
+Vũng Tàu, Bà Rịa - Vũng Tàu
+Quận Ô Môn, Cần Thơ
+Hòa Bình, Hoà Bình
+Vị Thanh, Hậu Giang
+Quảng Yên, Quảng Ninh
+Phủ Lý, Hà Nam
+Yên Bái, Yên Bái
+Hương Trà, Thừa Thiên Huế
+Hoàng Mai, Nghệ An
+Quận Ngô Quyền, Hải Phòng
+Lai Châu, Lai Châu
+Nha Trang, Khánh Hòa
+Huế, Thừa Thiên Huế
+Tân An, Long An
+Cai Lậy, Tiền Giang
+Hội An, Quảng Nam
+Ngã Bảy, Hậu Giang
+Long Khánh, Đồng Nai
+Uông Bí, Quảng Ninh
+Quận Bình Tân, Hồ Chí Minh
+Quận Thủ Đức, Hồ Chí Minh
+Bến Cát, Bình Dương
+Quận Nam Từ Liêm, Hà Nội
+Quận 1, Hồ Chí Minh
+Châu Đốc, An Giang
+Vĩnh Yên, Vĩnh Phúc
+Quận Cầu Giấy, Hà Nội
+Kon Tum, Kon Tum
+Sơn Tây, Hà Nội
+Thái Bình, Thái Bình
+Quận 12, Hồ Chí Minh
+Lạng Sơn, Lạng Sơn
+Quận Kiến An, Hải Phòng
+Tam Điệp, Ninh Bình
+Bình Minh, Vĩnh Long
+Cao Lãnh, Đồng Tháp
+Dĩ An, Bình Dương
+Quận Bình Thạnh, Hồ Chí Minh
+Vĩnh Long, Vĩnh Long
+Điện Bàn, Quảng Nam
+Đông Hà, Quảng Trị
+Hương Thủy, Thừa Thiên Huế
+An Nhơn, Bình Định
+Cẩm Phả, Quảng Ninh
+Quận Hồng Bàng, Hải Phòng
+Quận Tây Hồ, Hà Nội
+Thái Nguyên, Thái Nguyên
+Sầm Sơn, Thanh Hóa
+Cam Ranh, Khánh Hòa
+Hà Tiên, Kiên Giang
+Quận Bình Thuỷ, Cần Thơ
+Tuyên Quang, Tuyên Quang
+Vinh, Nghệ An
+Quận 10, Hồ Chí Minh
+Sơn La, Sơn La
+Mỹ Tho, Tiền Giang
+Vĩnh Châu, Sóc Trăng
+Bỉm Sơn, Thanh Hóa
+Phổ Yên, Thái Nguyên
+Sóc Trăng, Sóc Trăng
+Bến Tre, Bến Tre
+Quận 3, Hồ Chí Minh
+Quận Tân Phú, Hồ Chí Minh
+Quận Thanh Xuân, Hà Nội
+Sông Cầu, Phú Yên
+Quận Ninh Kiều, Cần Thơ
+Quảng Ngãi, Quảng Ngãi
+Quận 6, Hồ Chí Minh
+Quận Ba Đình, Hà Nội
+Quận Bắc Từ Liêm, Hà Nội
+Quận 8, Hồ Chí Minh
+Quận Dương Kinh, Hải Phòng
+Phú Thọ, Phú Thọ
+Tây Ninh, Tây Ninh
+Quận Hoàng Mai, Hà Nội
+Quận Gò Vấp, Hồ Chí Minh
+Móng Cái, Quảng Ninh
+Điện Biên Phủ, Điện Biên
+Quận Hai Bà Trưng, Hà Nội
+Cà Mau, Cà Mau
+Tam Kỳ, Quảng Nam
+Bà Rịa, Bà Rịa - Vũng Tàu
+Gò Công, Tiền Giang
+Hải Dương, Hải Dương
+Thanh Hóa, Thanh Hóa
+Đồng Xoài, Bình Phước
+Merge
+Thành Phố Đồng Hới, Quảng Bình
+Hà Tĩnh, Hà Tĩnh
+Quận Cẩm Lệ, Đà Nẵng
+Quận 4, Hồ Chí Minh
+Rạch Giá, Kiên Giang
+Quận Hoàn Kiếm, Hà Nội
+Ninh Bình, Ninh Bình
+Hồng Lĩnh, Hà Tĩnh
+Pleiku, Gia Lai
+Ayun Pa, Gia Lai
+Ninh Hòa, Khánh Hòa
+Hà Giang, Hà Giang
+Bảo Lộc, Lâm Đồng
+Quận 5, Hồ Chí Minh
+Đông Triều, Quảng Ninh
+Hưng Yên, Hưng Yên
+Kỳ Anh, Hà Tĩnh
+La Gi, Bình Thuận
