@@ -1,0 +1,228 @@
+{
+  "person": {
+    "person": [
+      "đến thăm",
+      "gặp mặt",
+      "trao đổi",
+      "là cha của",
+      "là bác của"
+    ],
+    "country": [
+      "sinh ra tại",
+      "mất tại",
+      "sống tại",
+      "làm việc tại",
+      "khởi nghiệp tại",
+      "là quan chức của"
+    ],
+    "event": [
+      "tổ chức sự kiện",
+      "tham dự sự kiện",
+      "tài trợ sự kiện",
+      "sở hữu sự kiện",
+      "lần đầu tiên tham gia sự kiện"
+    ],
+    "location": [
+      "đến thăm",
+      "được sinh ra tại",
+      "sống tại",
+      "làm việc tại",
+      "mất tại"
+    ],
+    "organization": [
+      "là CEO của",
+      "là nhân viên của",
+      "là thư ký của",
+      "là chủ tịch của",
+      "là tổng giám đốc của"
+    ],
+    "time": [
+      "được sinh ra vào",
+      "mất vào",
+      "đạt được danh hiệu thứ nhất vào",
+      "bị tai nạn vào",
+      "kết hôn vào"
+    ]
+  },
+  "organization": {
+    "location": [
+      "có trụ sở chính ở",
+      "có văn phòng đại diện ở",
+      "được thành lập ở"
+    ],
+    "time": [
+      "được thành lập vào",
+      "phá sản vào",
+      "nhận được đầu tư vào"
+    ],
+    "event": [
+      "tổ chức",
+      "tham dự",
+      "tài trợ",
+      "lần đầu tham dự"
+    ],
+    "organization": [
+      "hợp tác cùng",
+      "là đối thủ của",
+      "là công ty mẹ của",
+      "là công ty con của"
+    ],
+    "person": [
+      "được thành lập bởi",
+      "có CEO là",
+      "có giám đốc là",
+      "có nhân viên là"
+    ],
+    "country": [
+      "mở văn phòng đại diện ở",
+      "đầu tư vào",
+      "thuộc quốc gia",
+      "có trụ sở chính ở"
+    ]
+  },
+  "event": {
+    "location": [
+      "được tổ chức bởi",
+      "có sự tham gia của",
+      "được tài trợ bởi"
+    ],
+    "time": [
+      "tổ chức vào ngày",
+      "hủy bỏ vào ngày",
+      "kết thúc vào ngày",
+      "bắt đầu vào ngày",
+      "ngưng tài trợ vào ngày"
+    ],
+    "event": [
+      "có cùng nhà tài trợ với",
+      "tổ chức cùng ngày với",
+      "có cùng nhà tổ chức với",
+      "kết thúc cùng ngày với"
+    ],
+    "organization": [
+      "tổ chức bởi",
+      "tài trợ bởi",
+      "bị cấm tổ chức bởi",
+      "bị dừng tài trợ bởi",
+      "bị hủy bỏ bởi"
+    ],
+    "person": [
+      "tổ chức bởi",
+      "tài trợ bởi",
+      "bị dừng hoạt động bởi",
+      "bị ngưng tài trợ bởi",
+      "bị hủy bỏ bởi"
+    ],
+    "country": [
+      "tổ chức bởi",
+      "tài trợ bởi",
+      "được ủng hộ bởi",
+      "bị hủy bỏ bởi",
+      "bị cấm tổ chức bởi"
+    ]
+  },
+  "time": {
+    "person": [
+      "ngày sinh của",
+      "ngày mất của"
+    ],
+    "event": [
+      "là ngày tổ chức sự kiện",
+      "là ngày diễn ra sự kiện",
+      "là ngày kết thúc sự kiện",
+      "là ngày bế mạc sự kiện",
+      "là ngày khai mạc sự kiện"
+    ],
+    "time": [],
+    "organization": [
+      "là ngày thành lập của",
+      "là ngày sáng lập của",
+      "là ngày phá sản của",
+      "là ngày sáng lập của",
+      "là ngày đóng cửa của"
+    ],
+    "location": [
+      "là ngày thành lập"
+    ],
+    "country": [
+      "là quốc khánh của"
+    ]
+  },
+  "country": {
+    "person": [
+      "có tổng thống là",
+      "truy nã",
+      "trục xuất"
+    ],
+    "time": [
+      "có quốc khánh là"
+    ],
+    "event": [
+      "tổ chức",
+      "cấm tổ chức",
+      "tham dự",
+      "hạn chế"
+    ],
+    "organization": [
+      "đầu tư vào",
+      "cấm hoạt động",
+      "ủng hộ",
+      "cho phép hoạt động"
+    ],
+    "location": [
+      "đầu tư",
+      "phát triển",
+      "dừng phát triển",
+      "ngưng đầu tư",
+      "kêu gọi đầu tư"
+    ],
+    "country": [
+      "trừng phạt",
+      "đầu tư vào",
+      "hợp tác với",
+      "tuyên chiến với"
+    ]
+  },
+  "location": {
+    "person": [
+      "có chủ sở hữu là",
+      "thuộc về",
+      "được đến thăm bởi",
+      "là nơi sinh sống của",
+      "là nơi làm việc của"
+    ],
+    "time": [
+      "được thành lập vào",
+      "bị phá huỷ vào",
+      "được trùng tu vào",
+      "được bảo dưỡng vào",
+      "được khánh thành vào"
+    ],
+    "event": [
+      "là nơi diễn ra sự kiện",
+      "là nơi tạo ra sự kiện",
+      "là nơi đầu tiên diễn ra sự kiện",
+      "là nơi thứ năm diễn ra sự kiện",
+      "là nơi thứ mười diễn ra sự kiện"
+    ],
+    "organization": [
+      "được đến thăm bởi",
+      "là nơi đặt trụ sở chính của",
+      "là nơi đặt nhà máy của",
+      "là nơi thành lập"
+    ],
+    "location": [
+      "từng được biết đến là",
+      "có vị trí cạnh",
+      "nằm cùng nước với",
+      "do cùng một người tạo nên với",
+      "nằm cùng khu vực với"
+    ],
+    "country": [
+      "thuộc quốc gia",
+      "được xây dựng bởi",
+      "là biểu tượng của",
+      "nằm trong nước"
+    ]
+  }
+}

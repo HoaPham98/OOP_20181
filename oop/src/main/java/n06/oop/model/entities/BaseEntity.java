@@ -1,9 +1,5 @@
 package n06.oop.model.entities;
 
-import n06.oop.database.Setting;
-import org.cyberborean.rdfbeans.annotations.RDF;
-import org.cyberborean.rdfbeans.annotations.RDFSubject;
-
 import java.util.List;
 
 public class BaseEntity {
@@ -12,8 +8,6 @@ public class BaseEntity {
 	protected String description;
 	protected List<Source> sources;
 
-
-	@RDFSubject(prefix = Setting.PEEFIX_MODEL)
 	public String getId() {
 		return id;
 	}
@@ -22,7 +16,6 @@ public class BaseEntity {
 		this.id = id;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + "name")
 	public String getName() {
 		return name;
 	}
@@ -31,7 +24,6 @@ public class BaseEntity {
 		this.name = name;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + "description")
 	public String getDescription() {
 		return description;
 	}
@@ -40,7 +32,6 @@ public class BaseEntity {
 		this.description = description;
 	}
 
-	@RDF(value = Setting.PREFIX_PROPERTY + "sources")
 	public List<Source> getSources() {
 		return sources;
 	}

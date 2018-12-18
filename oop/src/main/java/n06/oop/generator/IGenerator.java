@@ -1,4 +1,4 @@
-package n06.oop.model.generator;
+package n06.oop.generator;
 
 import n06.oop.model.entities.BaseEntity;
 import org.eclipse.rdf4j.model.Model;

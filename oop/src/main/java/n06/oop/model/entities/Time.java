@@ -1,10 +1,19 @@
 package n06.oop.model.entities;
 
-import n06.oop.database.Setting;
-import org.cyberborean.rdfbeans.annotations.RDFBean;
+import java.time.LocalDate;
 
-@RDFBean(Setting.PREFIX_TIME)
 public class Time extends BaseEntity {
+
+    private LocalDate date;
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public String getType() {
         return "time";

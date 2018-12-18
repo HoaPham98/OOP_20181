@@ -6,7 +6,7 @@ import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleNamespace;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
-public class Entity {
+public class ENT {
     public static final String NAMESPACE = "http://nhom06/model#";
     public static final String PREFIX = "model";
     public static final Namespace NS = new SimpleNamespace(PREFIX, NAMESPACE);

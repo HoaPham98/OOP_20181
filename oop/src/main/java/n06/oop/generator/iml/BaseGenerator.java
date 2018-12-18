@@ -1,10 +1,14 @@
-package n06.oop.model.generator;
+package n06.oop.generator.iml;
 
 import n06.oop.database.ConnectionManager;
 import n06.oop.model.entities.BaseEntity;
-import n06.oop.model.vocabulary.Entity;
-import n06.oop.model.vocabulary.Property;
+import n06.oop.model.entities.Source;
+import n06.oop.generator.IGenerator;
+import n06.oop.model.vocabulary.ENT;
+import n06.oop.model.vocabulary.PROP;
 import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
@@ -22,10 +26,12 @@ public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
     protected String filePath = "/data";
     protected RepositoryConnection conn;
     protected ModelBuilder builder;
+    protected ValueFactory factory;
 
     public BaseGenerator() {
         conn = ConnectionManager.getConnection();
-        builder = new ModelBuilder().setNamespace(Entity.NS).setNamespace(Property.NS);
+        builder = new ModelBuilder().setNamespace(ENT.NS).setNamespace(PROP.NS);
+        factory = SimpleValueFactory.getInstance();
     }
 
     public void init(String filePath) {
@@ -39,10 +45,20 @@ public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
             {
                 dataList.add(line);
             }
-            dataList.size();
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Source> generateSources(int num) {
+        List<Source> sources = new ArrayList<>();
+        for(int i=0; i<num; i++) {
+            Source source = new Source();
+            sources.add(source);
+        }
+
+        return sources;
     }
 
     @Override
