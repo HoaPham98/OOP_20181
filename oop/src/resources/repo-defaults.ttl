@@ -11,7 +11,7 @@
 @prefix rel: <http://nhom06/relationship#>.
 
 [] a rep:Repository ;
-#    rep:repositoryID "" ;
+#    rep:repositoryID "graphdb-repo" ;
 #    rdfs:label "" ;
     rep:repositoryImpl [
         rep:repositoryType "graphdb:FreeSailRepository" ;

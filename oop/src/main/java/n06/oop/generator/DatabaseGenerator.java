@@ -1,7 +1,9 @@
 package n06.oop.generator;
 
 import n06.oop.App;
+import n06.oop.database.ConnectionManager;
 import n06.oop.relationship.RelationGenerator;
+import n06.oop.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +17,11 @@ public class DatabaseGenerator {
 
     public static final String[] TYPES = {"person", "country", "location", "event", "organization", "time"};
 
-    public static void generator(int numEntity, int numRelation) {
+    private int countDone = 0;
+
+    public void generator(int numEntity, int numRelation) {
+
+        ConnectionManager.getConnection().clear();
 
         List<IGenerator> iGenerators = new ArrayList<>();
         for (String type: TYPES) {
@@ -23,37 +29,36 @@ public class DatabaseGenerator {
             iGenerators.add(iGenerator);
         }
 
-        List<Integer> parts = splitIntoParts(numEntity, TYPES.length);
-        long start = System.currentTimeMillis();
+        List<Integer> parts = Utils.splitIntoParts(numEntity, TYPES.length);
+
         for(int i=0; i<TYPES.length; i++) {
-            iGenerators.get(i).generateData(parts.get(i));
+            final IGenerator iGenerator = iGenerators.get(i);
+            final int num = parts.get(i);
+            final String name = TYPES[i];
+            final int count = i;
+            Thread thread = new Thread(() -> {
+                long start = System.currentTimeMillis();
+                logger.info("Start gening " + name);
+                iGenerator.generateData(num);
+                long finish = System.currentTimeMillis();
+
+                logger.info("Done gening " + name + ": " + (finish - start));
+
+                countDone++;
+
+                if (countDone == TYPES.length) {
+                    long t1 = System.currentTimeMillis();
+
+                    RelationGenerator relationGenerator = new RelationGenerator();
+                    relationGenerator.generateRelation(numRelation);
+
+                    long t2 = System.currentTimeMillis();
+
+                    logger.info("Gen time: " + (t2 - t1));
+                }
+            });
+            thread.start();
         }
-        long finish = System.currentTimeMillis();
-
-        logger.info("Gen time: " + (finish - start));
-
-        start = System.currentTimeMillis();
-
-        RelationGenerator relationGenerator = new RelationGenerator();
-        relationGenerator.generateRelation(numRelation);
-
-        finish = System.currentTimeMillis();
-
-        logger.info("Gen time: " + (finish - start));
-
     }
 
-    private static List<Integer> splitIntoParts(int whole, int parts) {
-        List<Integer> arr = new ArrayList<>(parts);
-        int remain = whole;
-        int partsLeft = parts;
-        for (int i = 0; partsLeft > 0; i++) {
-            int size = (remain + partsLeft - 1) / partsLeft; // rounded up, aka ceiling
-            arr.add(size);
-            remain -= size;
-            partsLeft--;
-        }
-        Collections.shuffle(arr);
-        return arr;
-    }
 }
