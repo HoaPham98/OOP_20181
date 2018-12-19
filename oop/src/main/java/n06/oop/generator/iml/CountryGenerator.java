@@ -1,6 +1,5 @@
 package n06.oop.generator.iml;
 
-import n06.oop.database.ConnectionManager;
 import n06.oop.model.entities.Country;
 import n06.oop.model.entities.Source;
 import n06.oop.model.vocabulary.ENT;
@@ -10,17 +9,13 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.rdf4j.model.Model;
-import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
-import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
 
 public class CountryGenerator extends BaseGenerator<Country> {
 
@@ -59,20 +54,24 @@ public class CountryGenerator extends BaseGenerator<Country> {
 
     @Override
     public void generateData(int num) {
-        final RepositoryConnection conn = ConnectionManager.getConnection();
+        Country country = null;
         conn.begin();
+        long start = System.currentTimeMillis();
         try {
-            Collections.shuffle(dataList);
-            IntStream.range(0,num).parallel().forEach(count -> {
-                int i = count % countries.size();
-                Country country = countries.get(i);
+            for (int count = 0; count < num; count++) {
+                int rand = ThreadLocalRandom.current().nextInt(0, countries.size());
+
+                country = countries.get(rand);
                 country.setId("COUNTRY_" + count);
                 List<Source> sources = generateSources(ThreadLocalRandom.current().nextInt(1,6));
                 country.setSources(sources);
                 Model model = createModel(country);
                 conn.add(model);
-            });
+            }
             conn.commit();
+            long end = System.currentTimeMillis();
+            long time = end - start;
+            System.out.println(time);
         } catch (Throwable t) {
             conn.rollback();
         }
@@ -80,7 +79,6 @@ public class CountryGenerator extends BaseGenerator<Country> {
 
     @Override
     public Model createModel(Country item) {
-        ModelBuilder builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.COUNTRY)
                 .add(PROP.NAME, item.getName())

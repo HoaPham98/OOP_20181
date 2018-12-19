@@ -9,8 +9,8 @@ import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.config.RepositoryConfig;
 import org.eclipse.rdf4j.repository.config.RepositoryConfigSchema;
+import org.eclipse.rdf4j.repository.manager.RemoteRepositoryManager;
 import org.eclipse.rdf4j.repository.manager.RepositoryManager;
-import org.eclipse.rdf4j.repository.manager.RepositoryProvider;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParser;
 import org.eclipse.rdf4j.rio.Rio;
@@ -27,8 +27,8 @@ public class ConnectionManager {
     private static Logger logger =
             LoggerFactory.getLogger(ConnectionManager.class);
 
-    private final static ThreadLocal<RepositoryManager> LOCAL = new ThreadLocal<>();
-    private static RepositoryManager repositoryManager;
+    private final static ThreadLocal<RepositoryConnection> LOCAL = new ThreadLocal<>();
+    private static Repository repository;
 
 
     /**
@@ -37,9 +37,8 @@ public class ConnectionManager {
     static {
         try {
             // Instantiate a local repository manager and initialize it
-            RepositoryManager repositoryManager  = RepositoryProvider.getRepositoryManager(Setting.URL);
+            RepositoryManager repositoryManager = new RemoteRepositoryManager(Setting.URL);
             repositoryManager.initialize();
-            repositoryManager.getAllRepositories();
 
             // Instantiate a repository graph model
             TreeModel graph = new TreeModel();
@@ -65,7 +64,10 @@ public class ConnectionManager {
             RepositoryConfig repositoryConfig = RepositoryConfig.create(graph, repositoryNode);
             repositoryManager.addRepositoryConfig(repositoryConfig);
 
-            ConnectionManager.setRepositoryManager(repositoryManager);
+            // Get the repository from repository manager, note the repository id set in configuration .ttl file
+            Repository repository = repositoryManager.getRepository(Setting.REPO_NAME);
+
+            ConnectionManager.setRepository(repository);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,20 +78,26 @@ public class ConnectionManager {
 
     }
 
-    public static void setRepositoryManager(RepositoryManager repository) {
-        ConnectionManager.repositoryManager = repository;
+    public static void setRepository(Repository repository) {
+        ConnectionManager.repository = repository;
     }
 
     public static RepositoryConnection getConnection() {
-        Repository repository = repositoryManager.getRepository(Setting.REPO_NAME);
-        RepositoryConnection conn = repository.getConnection();
-
+        RepositoryConnection conn = LOCAL.get();
+        if (conn == null || !conn.isOpen()) {
+            conn = repository.getConnection();
+            LOCAL.set(conn);
+        }
         return conn;
     }
 
 
 
     public static void release() {
-
+        RepositoryConnection conn = LOCAL.get();
+        if (null != conn) {
+            conn.close();
+            LOCAL.remove();
+        }
     }
 }

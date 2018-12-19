@@ -1,18 +1,15 @@
 package n06.oop.generator.iml;
 
 import n06.oop.database.ConnectionManager;
-import n06.oop.database.Setting;
 import n06.oop.model.entities.BaseEntity;
 import n06.oop.model.entities.Source;
 import n06.oop.generator.IGenerator;
 import n06.oop.model.vocabulary.ENT;
 import n06.oop.model.vocabulary.PROP;
-import n06.oop.utils.Utils;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.util.ModelBuilder;
-import org.eclipse.rdf4j.query.algebra.In;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import java.io.BufferedReader;
@@ -27,9 +24,13 @@ public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
 
     protected List<String> dataList;
     protected String filePath = "/data";
+    protected RepositoryConnection conn;
+    protected ModelBuilder builder;
     protected ValueFactory factory;
 
     public BaseGenerator() {
+        conn = ConnectionManager.getConnection();
+        builder = new ModelBuilder().setNamespace(ENT.NS).setNamespace(PROP.NS);
         factory = SimpleValueFactory.getInstance();
     }
 
