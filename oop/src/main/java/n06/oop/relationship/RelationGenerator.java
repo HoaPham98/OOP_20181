@@ -45,13 +45,13 @@ public class RelationGenerator {
 
             JSONObject json = new JSONObject(jsonText);
 
-            for(String type: TYPES) {
+            for (String type : TYPES) {
                 JSONObject obj1 = json.getJSONObject(type);
                 Map<String, List<String>> map1 = new HashMap<>();
-                for (String type1: TYPES) {
+                for (String type1 : TYPES) {
                     JSONArray arr = obj1.getJSONArray(type1);
                     List<String> values = new ArrayList<>();
-                    for (int i=0; i<arr.length(); i++) {
+                    for (int i = 0; i < arr.length(); i++) {
                         values.add(arr.getString(i));
                     }
                     map1.put(type1, values);
@@ -68,37 +68,38 @@ public class RelationGenerator {
         // Khởi tạo connection
         conn = ConnectionManager.getConnection();
         factory = SimpleValueFactory.getInstance();
+        sizeOfType = new HashMap<>();
 
-        // Tính số lượng từng loại đối tượng có trong database
-        String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-                "prefix model: <http://nhom06/model#>\n" +
-                "SELECT ?type (count(?type) as ?count)  WHERE {\n" +
-                "    ?x rdf:type ?type\n" +
-                "    FILTER regex(str(?x), \"http://nhom06/model#\", \"i\")\n" +
-                "}\n" +
-                "GROUP BY ?type";
-        TupleQuery query = conn.prepareTupleQuery(queryString);
-        // A QueryResult is also an AutoCloseable resource, so make sure it gets
-        // closed when done.
-        try (TupleQueryResult result = query.evaluate()) {
-            sizeOfType = new HashMap<>();
-            // we just iterate over all solutions in the result...
-            while (result.hasNext()) {
-                BindingSet solution = result.next();
-                String type = solution.getValue("type").stringValue().substring(ENT.NAMESPACE.length());
-                int count = 0;
-                try {
-                    count = Integer.parseInt(solution.getValue("count").stringValue());
-                } catch (Exception e) {
-
-                }
-                sizeOfType.put(type,count);
-            }
-        }
+//        // Tính số lượng từng loại đối tượng có trong database
+//        String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+//                "prefix model: <http://nhom06/model#>\n" +
+//                "SELECT ?type (count(?type) as ?count)  WHERE {\n" +
+//                "    ?x rdf:type ?type\n" +
+//                "    FILTER regex(str(?x), \"http://nhom06/model#\", \"i\")\n" +
+//                "}\n" +
+//                "GROUP BY ?type";
+//        TupleQuery query = conn.prepareTupleQuery(queryString);
+//        // A QueryResult is also an AutoCloseable resource, so make sure it gets
+//        // closed when done.
+//        try (TupleQueryResult result = query.evaluate()) {
+//            sizeOfType = new HashMap<>();
+//            // we just iterate over all solutions in the result...
+//            while (result.hasNext()) {
+//                BindingSet solution = result.next();
+//                String type = solution.getValue("type").stringValue().substring(ENT.NAMESPACE.length());
+//                int count = 0;
+//                try {
+//                    count = Integer.parseInt(solution.getValue("count").stringValue());
+//                } catch (Exception e) {
+//
+//                }
+//                sizeOfType.put(type, count);
+//            }
+//        }
         // Để giá trị mặc định là 0
-        for (String type: TYPES) {
+        for (String type : TYPES) {
             if (!sizeOfType.containsKey(type)) {
-                sizeOfType.put(type, 0);
+                sizeOfType.put(type, 2500000);
             }
         }
     }
@@ -106,7 +107,7 @@ public class RelationGenerator {
     public void generateRelation(int num) {
         try {
             conn.begin();
-            IntStream.range(0,num).parallel().forEach(count -> {
+            IntStream.range(0, num).forEach(count -> {
                 String type1 = Utils.getRandomFromList(TYPES);
                 String type2 = Utils.getRandomFromList(TYPES);
                 List<String> rels = RULES.get(type1).get(type2);

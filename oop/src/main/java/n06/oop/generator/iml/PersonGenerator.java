@@ -41,10 +41,12 @@ public class PersonGenerator extends BaseGenerator<Person> {
 
                 conn.add(model);
             }
+            conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
             System.out.println(time);
         } catch (Throwable t) {
+            conn.rollback();
             t.printStackTrace();
         }
     }

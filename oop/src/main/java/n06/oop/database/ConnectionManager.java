@@ -28,6 +28,7 @@ public class ConnectionManager {
             LoggerFactory.getLogger(ConnectionManager.class);
 
     private static RepositoryManager repositoryManager;
+    private static String repositoryId;
 
 
     /**
@@ -65,6 +66,7 @@ public class ConnectionManager {
             repositoryManager.addRepositoryConfig(repositoryConfig);
 
             ConnectionManager.setRepositoryManager(repositoryManager);
+            ConnectionManager.setRepository(Setting.REPO_NAME);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -79,8 +81,12 @@ public class ConnectionManager {
         ConnectionManager.repositoryManager = repository;
     }
 
+    public static void setRepository(String repositoryId) {
+        ConnectionManager.repositoryId = repositoryId;
+    }
+
     public static RepositoryConnection getConnection() {
-        Repository repository = repositoryManager.getRepository(Setting.REPO_NAME);
+        Repository repository = repositoryManager.getRepository(repositoryId);
         RepositoryConnection conn = repository.getConnection();
 
         return conn;

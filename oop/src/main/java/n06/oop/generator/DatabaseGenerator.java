@@ -1,15 +1,14 @@
 package n06.oop.generator;
 
-import n06.oop.App;
 import n06.oop.database.ConnectionManager;
 import n06.oop.database.Setting;
+import n06.oop.generator.interfaces.IGenerator;
 import n06.oop.relationship.RelationGenerator;
 import n06.oop.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;

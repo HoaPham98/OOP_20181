@@ -22,9 +22,9 @@ public class OrganizationGenerator extends BaseGenerator<Organization> {
     @Override
     public void generateData(int num) {
         Organization organization = new Organization();
-        conn.begin();
         long start = System.currentTimeMillis();
         try {
+            conn.begin();
             for (int count = 0; count < num; count++) {
                 int rand = ThreadLocalRandom.current().nextInt(0, dataList.size());
                 String name = dataList.get(rand);
