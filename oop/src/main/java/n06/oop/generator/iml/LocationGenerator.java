@@ -5,6 +5,7 @@ import n06.oop.model.entities.Source;
 import n06.oop.model.vocabulary.ENT;
 import n06.oop.model.vocabulary.PROP;
 import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public class LocationGenerator extends BaseGenerator<Location> {
 
     @Override
     public Model createModel(Location item) {
+        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.LOCATION)
                 .add(PROP.NAME, item.getName())

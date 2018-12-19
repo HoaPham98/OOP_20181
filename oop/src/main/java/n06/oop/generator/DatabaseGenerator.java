@@ -1,13 +1,20 @@
 package n06.oop.generator;
 
 import n06.oop.App;
+import n06.oop.database.ConnectionManager;
+import n06.oop.database.Setting;
 import n06.oop.relationship.RelationGenerator;
+import n06.oop.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class DatabaseGenerator {
 
@@ -15,7 +22,9 @@ public class DatabaseGenerator {
 
     public static final String[] TYPES = {"person", "country", "location", "event", "organization", "time"};
 
-    public static void generator(int numEntity, int numRelation) {
+    public void generator(int numEntity, int numRelation) {
+
+        ConnectionManager.getConnection().clear();
 
         List<IGenerator> iGenerators = new ArrayList<>();
         for (String type: TYPES) {
@@ -23,37 +32,67 @@ public class DatabaseGenerator {
             iGenerators.add(iGenerator);
         }
 
-        List<Integer> parts = splitIntoParts(numEntity, TYPES.length);
-        long start = System.currentTimeMillis();
+        List<Integer> parts = Utils.splitIntoParts(numEntity, TYPES.length);
+        ExecutorService executorService = Executors.newFixedThreadPool(Setting.MAX_CONCURRENT);
+        List<Future> futures = new ArrayList<>();
+
         for(int i=0; i<TYPES.length; i++) {
-            iGenerators.get(i).generateData(parts.get(i));
+            final IGenerator iGenerator = iGenerators.get(i);
+            final int num = parts.get(i);
+            final String name = TYPES[i];
+            final int count = i;
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    long start = System.currentTimeMillis();
+                    logger.info("Start gening " + name);
+                    iGenerator.generateData(num);
+                    long finish = System.currentTimeMillis();
+
+                    logger.info("Done gening " + name + ": " + (finish - start));
+                }
+            };
+
+            futures.add(executorService.submit(runnable));
         }
-        long finish = System.currentTimeMillis();
 
-        logger.info("Gen time: " + (finish - start));
+        try {
+            for (Future future : futures) {
+                future.get();
+            }
 
-        start = System.currentTimeMillis();
+            futures = new ArrayList<>();
 
-        RelationGenerator relationGenerator = new RelationGenerator();
-        relationGenerator.generateRelation(numRelation);
+            final List<Integer> parts2 = Utils.splitIntoParts(numRelation, Setting.MAX_CONCURRENT);
 
-        finish = System.currentTimeMillis();
+            for (int i=0; i < Setting.MAX_CONCURRENT; i++) {
+                int finalI = i;
+                Runnable runnable = () -> {
+                    long start = System.currentTimeMillis();
 
-        logger.info("Gen time: " + (finish - start));
+                    RelationGenerator relationGenerator = new RelationGenerator();
+                    relationGenerator.generateRelation(parts2.get(finalI));
+
+                    long finish = System.currentTimeMillis();
+
+                    logger.info("Gen time: " + (finish - start));
+                };
+
+                futures.add(executorService.submit(runnable));
+            }
+
+            for (Future future : futures) {
+                future.get();
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        executorService.shutdown();
 
     }
 
-    private static List<Integer> splitIntoParts(int whole, int parts) {
-        List<Integer> arr = new ArrayList<>(parts);
-        int remain = whole;
-        int partsLeft = parts;
-        for (int i = 0; partsLeft > 0; i++) {
-            int size = (remain + partsLeft - 1) / partsLeft; // rounded up, aka ceiling
-            arr.add(size);
-            remain -= size;
-            partsLeft--;
-        }
-        Collections.shuffle(arr);
-        return arr;
-    }
 }

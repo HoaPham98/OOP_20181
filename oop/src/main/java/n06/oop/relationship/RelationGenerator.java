@@ -24,6 +24,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
+
+import n06.oop.utils.Utils;
 
 public class RelationGenerator {
     public static final Map<String, Map<String, List<String>>> RULES;
@@ -103,16 +106,15 @@ public class RelationGenerator {
     public void generateRelation(int num) {
         try {
             conn.begin();
-            for (int i = 0; i < num; i++) {
-                String type1 = getRandomFromList(TYPES);
-                String type2 = getRandomFromList(TYPES);
+            IntStream.range(0,num).parallel().forEach(count -> {
+                String type1 = Utils.getRandomFromList(TYPES);
+                String type2 = Utils.getRandomFromList(TYPES);
                 List<String> rels = RULES.get(type1).get(type2);
                 if (rels.size() == 0 || sizeOfType.get(type1) == 0 || sizeOfType.get(type2) == 0) {
-                    i--;
-                    continue;
+                    return;
                 }
-                String relation = getRandomFromList(rels);
-                relation = nameToIRIString(relation);
+                String relation = Utils.getRandomFromList(rels);
+                relation = Utils.nameToIRIString(relation);
 
                 String id1 = type1.toUpperCase() + "_" + ThreadLocalRandom.current().nextInt(0, sizeOfType.get(type1));
                 String id2 = type2.toUpperCase() + "_" + ThreadLocalRandom.current().nextInt(0, sizeOfType.get(type2));
@@ -127,7 +129,7 @@ public class RelationGenerator {
                 conn.add(nameStatement);
 
 
-            }
+            });
             conn.commit();
         } catch (Throwable t) {
             conn.rollback();
@@ -138,18 +140,6 @@ public class RelationGenerator {
     public static void main(String[] args) {
         RelationGenerator relationGenerator = new RelationGenerator();
         relationGenerator.generateRelation(10);
-    }
-
-    public String getRandomFromList(List<String> list) {
-        return list.get(ThreadLocalRandom.current().nextInt(0,list.size()));
-    }
-
-    public String getRandomFromList(String[] list) {
-        return list[ThreadLocalRandom.current().nextInt(0,list.length)];
-    }
-
-    public String nameToIRIString(String name) {
-        return name.replaceAll(" ","_");
     }
 
 }

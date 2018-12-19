@@ -1,11 +1,14 @@
 package n06.oop.generator.iml;
 
+import n06.oop.database.ConnectionManager;
 import n06.oop.model.entities.Person;
 import n06.oop.model.entities.Source;
 import n06.oop.model.vocabulary.ENT;
 import n06.oop.model.vocabulary.PROP;
 import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -38,18 +41,17 @@ public class PersonGenerator extends BaseGenerator<Person> {
 
                 conn.add(model);
             }
-            conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
             System.out.println(time);
         } catch (Throwable t) {
-            conn.rollback();
             t.printStackTrace();
         }
     }
 
     @Override
     public Model createModel(Person item) {
+        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.PERSON)
                 .add(PROP.NAME, item.getName())

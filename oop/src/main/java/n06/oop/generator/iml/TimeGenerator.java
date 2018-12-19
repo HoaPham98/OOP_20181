@@ -5,6 +5,7 @@ import n06.oop.model.entities.Time;
 import n06.oop.model.vocabulary.ENT;
 import n06.oop.model.vocabulary.PROP;
 import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import java.time.LocalDate;
@@ -22,29 +23,37 @@ public class TimeGenerator extends BaseGenerator<Time> {
 
     @Override
     public void generateData(int num) {
-        Time time = new Time();
-        for (int i=0; i<num; i++) {
-            int year = ThreadLocalRandom.current().nextInt(2015, 2019);
-            int day = ThreadLocalRandom.current().nextInt(1,366);
+        try {
+            Time time = new Time();
+            conn.begin();
+            for (int i = 0; i < num; i++) {
+                int year = ThreadLocalRandom.current().nextInt(2015, 2019);
+                int day = ThreadLocalRandom.current().nextInt(1, 366);
 
-            LocalDate date = LocalDate.ofYearDay(year, day);
+                LocalDate date = LocalDate.ofYearDay(year, day);
 
-            time.setId("TIME_" + i);
-            time.setName(date.format(DateTimeFormatter.ofPattern("dd-MM")));
-            time.setDate(date);
-            time.setDescription("Ngày: " + time.getName());
+                time.setId("TIME_" + i);
+                time.setName(date.format(DateTimeFormatter.ofPattern("dd-MM")));
+                time.setDate(date);
+                time.setDescription("Ngày: " + time.getName());
 
-            List<Source> sources = generateSources(ThreadLocalRandom.current().nextInt(1,6));
-            time.setSources(sources);
+                List<Source> sources = generateSources(ThreadLocalRandom.current().nextInt(1, 6));
+                time.setSources(sources);
 
-            Model model = createModel(time);
+                Model model = createModel(time);
 
-            conn.add(model);
+                conn.add(model);
+            }
+            conn.commit();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            conn.rollback();
         }
     }
 
     @Override
     public Model createModel(Time item) {
+        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.TIME)
                 .add(PROP.NAME, item.getName())

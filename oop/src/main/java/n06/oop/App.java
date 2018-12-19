@@ -1,10 +1,6 @@
 package n06.oop;
 
-import n06.oop.database.ConnectionManager;
 import n06.oop.generator.DatabaseGenerator;
-import n06.oop.relationship.RelationGenerator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Hello world!
@@ -15,7 +11,12 @@ public class App {
     {
         System.out.println( "Hello World!" );
 
-        DatabaseGenerator.generator(1000, 2000);
 
+        DatabaseGenerator databaseGenerator = new DatabaseGenerator();
+
+        long t1 = System.currentTimeMillis();
+        databaseGenerator.generator(20000, 40000);
+
+        System.out.println("Total gen time: " + (System.currentTimeMillis() - t1));
     }
 }

@@ -1,11 +1,13 @@
 package n06.oop.generator.iml;
 
 import n06.oop.database.ConnectionManager;
+import n06.oop.database.Setting;
 import n06.oop.model.entities.BaseEntity;
 import n06.oop.model.entities.Source;
 import n06.oop.generator.IGenerator;
 import n06.oop.model.vocabulary.ENT;
 import n06.oop.model.vocabulary.PROP;
+import n06.oop.utils.Utils;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
@@ -19,6 +21,11 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.stream.IntStream;
 
 public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
 

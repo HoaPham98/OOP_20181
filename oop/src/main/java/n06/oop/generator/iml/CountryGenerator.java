@@ -9,6 +9,7 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import java.io.IOException;
@@ -79,6 +80,7 @@ public class CountryGenerator extends BaseGenerator<Country> {
 
     @Override
     public Model createModel(Country item) {
+        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.COUNTRY)
                 .add(PROP.NAME, item.getName())
