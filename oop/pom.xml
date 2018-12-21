@@ -45,6 +45,13 @@
             <artifactId>jettison</artifactId>
             <version>1.4.0</version>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/com.massisframework/j-text-utils -->
+		<dependency>
+			<groupId>com.massisframework</groupId>
+			<artifactId>j-text-utils</artifactId>
+			<version>0.3.4</version>
+		</dependency>
 
-    </dependencies>
+
+	</dependencies>
 </project>

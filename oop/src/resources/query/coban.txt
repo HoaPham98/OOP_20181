@@ -47,7 +47,7 @@ select distinct ?name  where{
 	?event rel:tổ_chức_vào_ngày ?time;
         prop:name ?name.
     ?time prop:date ?date
-    filter regex(str(?date), '2018-03-04')  
+    filter regex(str(?date), '2018-03-04')
 }
 
 - Những nơi có văn phòng đại diện của Apple
@@ -63,6 +63,7 @@ select distinct ?address where {
 - Những tổ chức có giá trị hơn 990,000,000 USD
 PREFIX prop: <http://nhom06/property#>
 PREFIX rel: <http://nhom06/relationship#>
+PREFIX model: <http://nhom06/model#>
 
 select distinct ?name where { 
 	?o rdf:type model:organization;

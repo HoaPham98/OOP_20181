@@ -26,7 +26,7 @@ public class DatabaseGenerator {
      * @param numEntity số lượng thực thể
      * @param numRelation số lượng quan hệ
      */
-    public void generator(int numEntity, int numRelation) {
+    public static void generator(int numEntity, int numRelation) {
 
         ConnectionManager.getConnection().clear();
 

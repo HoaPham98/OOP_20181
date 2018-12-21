@@ -1,11 +1,12 @@
-﻿- Những địa điểm tổ chức của 'Lễ hội văn hóa và ẩm thực Việt Nam – Hàn Quốc 2018' và tên tổ chức tổ chức và những người sinh ra ở đó
+﻿
+- Những địa điểm tổ chức của 'Ngày của Mẹ' và tên tổ chức tổ chức và những người sinh ra ở đó
 PREFIX rel: <http://nhom06/relationship#>
 PREFIX prop: <http://nhom06/property#>
 
 select distinct ?personName ?locationName ?organizationName where{  
 	?location rel:là_nơi_diễn_ra_sự_kiện ?event.
     ?location prop:name ?locationName.
-    ?event prop:name 'Lễ hội văn hóa và ẩm thực Việt Nam – Hàn Quốc 2018'.
+    ?event prop:name 'Ngày của Mẹ'.
     ?location rel:là_nơi_sinh_sống_của ?person.
     ?person prop:name ?personName.
     ?event rel:tài_trợ_bởi ?organization.
@@ -52,15 +53,6 @@ select distinct ?event (count(?person) as ?count)  where{
 }
 group by ?event
 
-- Số lượng mỗi loại entity có trong database
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-prefix model: <http://nhom06/model#>
-SELECT ?type (count(?type) as ?count)  WHERE {
-    ?x rdf:type ?type
-    FILTER strstarts(str(?x), "http://nhom06/model#")
-}
-GROUP BY ?type
-
 - Tên các nước có dân số trên 80,000,000 và số lượng các tổ chức có giá trên trên 900,000,000 USD mà nước đó đầu tư vào
 PREFIX rel: <http://nhom06/relationship#>
 PREFIX prop: <http://nhom06/property#>
@@ -75,3 +67,33 @@ select distinct ?name (count(?company) as ?count) where {
 }
 group by ?name
 
+- Danh sách các sự kiện bị 1 quốc gia cấm tổ chức có sự tham dự của 1 quan chức và ngày tổ chức sự kiện đó
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX model: <http://nhom06/model#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+select ?name ?cName ?date where {
+    ?event prop:name ?name;
+           rel:bị_cấm_tổ_chức_bởi ?country;
+           rel:tài_trợ_bởi ?person;
+           rel:tổ_chức_vào_ngày ?time .
+    ?person rel:là_quan_chức_của ?country2 .
+    ?country prop:name ?cName;
+    rdf:type model:country .
+    ?time prop:date ?date .
+}
+
+- Danh sách những người tham gia sự kiện vào tháng 7-2015 cùng tên sự kiện và ngày tổ chức tương ứng
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX model: <http://nhom06/model#>
+
+select distinct ?p ?name ?date where{
+	?event rel:tổ_chức_vào_ngày ?time;
+	prop:name ?name.
+    ?person rel:tham_dự_sự_kiện ?event;
+    prop:name ?p.
+    ?time prop:date ?date
+    filter regex(str(?date), '2015-07')
+}

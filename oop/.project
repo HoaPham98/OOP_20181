@@ -20,4 +20,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/java/n06/oop/generator/IGenerator.java</name>
+			<type>1</type>
+			<location>C:/Users/HOA/Documents/oop_20181/oop/src/main/java/n06/oop/generator/IGenerator.java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

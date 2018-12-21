@@ -13,18 +13,41 @@ import java.util.concurrent.ThreadLocalRandom;
 import static n06.oop.database.Setting.TYPES;
 
 public class Utils {
+    public static final String UTF8_BOM = "\uFEFF";
+
+    /**
+     * Lấy ngẫu nhiên 1 phần tử trong list
+     * @param list
+     * @return phần tử ngẫu nhiên
+     */
     public static String getRandomFromList(List<String> list) {
         return list.get(ThreadLocalRandom.current().nextInt(0,list.size()));
     }
 
+    /**
+     * Lấy ngẫu nhiên 1 phần tử trong mảng
+     * @param list
+     * @return phần tử ngẫu nhiên
+     */
     public static String getRandomFromList(String[] list) {
         return list[ThreadLocalRandom.current().nextInt(0,list.length)];
     }
 
+    /**
+     * Tạo IRI quan hệ từ tên quan hệ
+     * @param name tên quan hệ
+     * @return IRI quan hệ
+     */
     public static String nameToIRIString(String name) {
         return name.replaceAll(" ","_");
     }
 
+    /**
+     * Chia các số từ 0 đến whole thành các phần
+     * @param whole chặn trên
+     * @param parts số phần muốn chia
+     * @return mảng chứa độ dài các phần
+     */
     public static List<Integer> splitIntoParts(int whole, int parts) {
         List<Integer> arr = new ArrayList<>(parts);
         int remain = whole;
@@ -39,6 +62,10 @@ public class Utils {
         return arr;
     }
 
+    /**
+     * Lấy thông tin số lượng từng loại thực thể
+     * @return map chứa tên loại thực thế -> số lượng
+     */
     public static Map<String, Integer> getSizeOfType() {
         Map<String, Integer> sizeOfType;
         RepositoryConnection conn = ConnectionManager.getConnection();
@@ -76,5 +103,12 @@ public class Utils {
         }
 
         return sizeOfType;
+    }
+
+    public static String removeUTF8BOM(String s) {
+        if (s.startsWith(UTF8_BOM)) {
+            s = s.substring(1);
+        }
+        return s;
     }
 }
