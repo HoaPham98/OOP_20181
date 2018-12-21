@@ -20,4 +20,9 @@ public class Setting {
      * CONFIG CONCURRENT
      */
     public static final int MAX_CONCURRENT = 6;
+
+    /**
+     *  CONST
+     */
+    public static final String[] TYPES = {"person", "country", "location", "event", "organization", "time"};
 }

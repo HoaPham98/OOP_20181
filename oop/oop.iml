@@ -134,7 +134,6 @@
     <orderEntry type="library" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.16" level="project" />
-    <orderEntry type="library" name="Maven: org.cyberborean:rdfbeans:2.2" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jettison:jettison:1.4.0" level="project" />
   </component>
 </module>

@@ -1,0 +1,100 @@
+﻿- Việt Nam tuyên chiến với những quốc gia nào
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select ?name where { 
+    ?country rel:tuyên_chiến_với ?country1;
+    prop:name 'Vietnam' .
+    ?country1 prop:name ?name .
+}
+
+- Tên những người có ngày sinh là 04/3
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select distinct ?name ?date where{ 
+	?person prop:name ?name .
+	?time rel:ngày_sinh_của ?person;
+	prop:name '03-04';
+ 	prop:date ?date
+}
+
+- Những nước đầu tư vào Apple
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select ?name where { 
+	?country rel:đầu_tư_vào ?or;
+          prop:name ?name.
+    ?or prop:name "Apple" .
+}
+
+- Những người làm CEO của Apple
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+
+select distinct ?name where { 
+	?person rel:là_CEO_của ?or;
+         prop:name ?name.
+    ?or prop:name "Apple".
+}
+
+- Những sự kiện tổ chức trong ngày 04/03/2018
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+
+select distinct ?name  where{  
+	?event rel:tổ_chức_vào_ngày ?time;
+        prop:name ?name.
+    ?time prop:date ?date
+    filter regex(str(?date), '2018-03-04')  
+}
+
+- Những nơi có văn phòng đại diện của Apple
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select distinct ?address where { 
+	?or rel:có_văn_phòng_đại_diện_ở ?location;
+     prop:name "Facebook" .
+    ?location prop:name ?address .
+}
+
+- Những tổ chức có giá trị hơn 990,000,000 USD
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select distinct ?name where { 
+	?o rdf:type model:organization;
+    prop:name ?name;
+    prop:valuation ?v.
+    filter(?v > 990000000)
+}
+
+- Lấy dân số của Việt Nam
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+select ?population where { 
+	?country prop:name "Vietnam";
+          prop:population ?population .
+}
+limit 1
+
+- Những sự kiện tổ chức cùng ngày
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select distinct ?event1 ?event2 where{
+	?e1 rel:tổ_chức_cùng_ngày_với ?e2.
+    ?e1 prop:name ?event1.
+    ?e2 prop:name ?event2
+}
+
+- Những ngày mà location "Quận 3, Hồ Chí Minh" bị phá huỷ
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+select distinct ?date where {
+    ?location rel:bị_phá_huỷ_vào ?time;
+              prop:name "Quận 3, Hồ Chí Minh".
+    ?time prop:date ?date .
+}

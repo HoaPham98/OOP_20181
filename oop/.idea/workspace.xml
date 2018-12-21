@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db67af73-4a70-45b9-899f-73d35f03a5ea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/IGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_cyberborean_rdfbeans_2_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/database/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/database/ConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/database/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/database/Setting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/IGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/interfaces/IGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/BaseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/BaseGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/OrganizationGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/OrganizationGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/PersonGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/PersonGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/SRC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/TimeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/TimeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/generator/interfaces/IGenerator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/relation/rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/relation/rules.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,13 +26,59 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1490507685">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="MODULES/mdl-oop" value="2" />
+          <entry key="generator" value="1" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="44" />
+          <entry key="json" value="1" />
+          <entry key="oop" value="1" />
+          <entry key="txt" value="2" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="44" />
+          <entry key="JSON" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="UML" value="5" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="883" />
+          <entry key="json" value="62" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="883" />
+          <entry key="JSON" value="62" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/App.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/BaseGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+            <state relative-caret-position="1007">
+              <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,33 +87,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/ConnectionManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/IGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13">
-              <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3124#3125#0" expanded="true" />
-                <element signature="e#3185#3186#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/Setting.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" column="60" lean-forward="true" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/interfaces/IGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="72">
               <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-880">
+              <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/PersonGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="51" column="33" selection-start-line="45" selection-start-column="30" selection-end-line="51" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,8 +158,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/PROP.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="11" column="94" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="11" selection-end-column="94" />
+            <state relative-caret-position="221">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/ENT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="46" />
+            <state relative-caret-position="255">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,34 +180,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/BaseEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/OrganizationGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -169,9 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/database/RepositoryConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/Source.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/generator/CountryGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/BaseModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/Country.java" />
@@ -203,30 +248,51 @@
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/SRC.java" />
         <option value="$PROJECT_DIR$/src/resources/data/event.txt" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/RelationGenerator.java" />
-        <option value="$PROJECT_DIR$/src/resources/relation/rules.json" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/PROP.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/REL.java" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/BaseGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/LocationGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/EventGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/CountryGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/TimeGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/PersonGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/OrganizationGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/database/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/database/Setting.java" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/PersonGenerator.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/interfaces/IGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/BaseGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/n06/oop/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/TimeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/resources/relation/rules.json" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-7" />
-    <option name="width" value="1505" />
-    <option name="height" value="1057" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="oop" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="27" />
+    <option name="y" value="39" />
+    <option name="width" value="870" />
+    <option name="height" value="930" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -234,7 +300,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="oop" type="58d84e3e:PackageViewProjectNode" />
+              <item name="oop" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,18 +352,92 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="generator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="vocabulary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
               <item name="relationship" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oop" type="b2602c69:ProjectViewProjectNode" />
               <item name="oop" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="relation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,7 +446,10 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="copyright" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -393,11 +547,14 @@
       <workItem from="1545061574331" duration="8596000" />
       <workItem from="1545097328190" duration="2163000" />
       <workItem from="1545114227181" duration="1096000" />
+      <workItem from="1545292603699" duration="348000" />
+      <workItem from="1545311732739" duration="8837000" />
+      <workItem from="1545358809996" duration="866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71600000" />
+    <option name="totallyTimeSpent" value="84746000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,18 +566,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4994641" visible="true" weight="0.26385927" />
-      <window_info id="Structure" order="1" sideWeight="0.5005359" side_tool="true" weight="0.26066098" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49822065" visible="true" weight="0.24048583" />
+      <window_info id="Structure" order="1" sideWeight="0.5017794" side_tool="true" weight="0.23643725" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29046088" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39764202" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.49288255" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39764202" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
@@ -440,9 +597,9 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Maven" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="PlantUML" order="7" />
-      <window_info anchor="right" id="UML design tool window" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="PlantUML" order="7" weight="0.32955465" />
+      <window_info anchor="right" id="UML design tool window" order="8" weight="0.6097166" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.32955465" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="0" />
@@ -475,111 +632,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java</url>
-          <line>133</line>
-          <properties />
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/RepositoryConnector.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/cyberborean/rdfbeans/2.2/rdfbeans-2.2.jar!/org/cyberborean/rdfbeans/annotations/RDFBean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="" y="">com</node>
-            <node x="" y="">schema</node>
-            <node x="" y="">cuda</node>
-            <node x="" y="">netscape</node>
-            <node x="" y="">toolbarButtonGraphics</node>
-            <node x="" y="">convert</node>
-            <node x="" y="">sun</node>
-            <node x="" y="">groovyjarjarasm</node>
-            <node x="" y="">java</node>
-            <node x="" y="">common</node>
-            <node x="" y="">javax</node>
-            <node x="" y="">net</node>
-            <node x="" y="">OSGI-INF</node>
-            <node x="" y="">images</node>
-            <node x="" y="">junit</node>
-            <node x="" y="">org</node>
-            <node x="" y="">ch</node>
-            <node x="" y="">junit3.8.1</node>
-            <node x="" y="">mozilla</node>
-            <node x="" y="">gnu</node>
-            <node x="" y="">jdk</node>
-            <node x="" y="">META-INF</node>
-            <node x="" y="">groovy</node>
-            <node x="" y="">util</node>
-            <node x="" y="">n06</node>
-            <node x="" y="">groovyjarjarcommonscli</node>
-            <node x="" y="">config</node>
-            <node x="" y="">groovyjarjarantlr</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="293.0" y="311.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/n06.oop">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>n06.oop</OriginalElement>
-          <nodes>
-            <node x="" y="">n06.oop.AppTest</node>
-            <node x="" y="">n06.oop.App</node>
-            <node x="" y="">n06.oop.model</node>
-            <node x="" y="">n06.oop.database</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="207.0" y="120.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/time/format/DateTimeFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -624,29 +680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#393#394#0" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -654,11 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-          <folding>
-            <element signature="e#138#139#0" expanded="true" />
-            <element signature="e#170#171#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,45 +708,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/SRC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="24" />
-          <folding>
-            <element signature="e#0#793#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/Time.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#189#190#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/SRC.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/Source.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="31" selection-start-column="31" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/data/country.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/data/event.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="185" column="47" selection-start-line="185" selection-start-column="47" selection-end-line="185" selection-end-column="47" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/data/jobs.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -728,11 +731,6 @@
         <state relative-caret-position="-349" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/data/person.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9495" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/data/organization.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2729" />
@@ -742,13 +740,6 @@
     <entry file="file://$PROJECT_DIR$/src/resources/data/location.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/relation/rules.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="135" column="13" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/repo-defaults.ttl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-281">
@@ -756,64 +747,267 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/OrganizationGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="45" column="32" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="32" />
+        <state relative-caret-position="-248">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/LocationGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
+        <state relative-caret-position="884">
           <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/EventGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
+        <state relative-caret-position="884">
           <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/CountryGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/Setting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/query.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="228">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/CountryGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+        <state relative-caret-position="187">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/n06.oop">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>n06.oop</OriginalElement>
+          <nodes>
+            <node x="" y="">n06.oop.generator</node>
+            <node x="" y="">n06.oop.AppTest</node>
+            <node x="" y="">n06.oop.query</node>
+            <node x="" y="">n06.oop.relationship</node>
+            <node x="" y="">n06.oop.utils</node>
+            <node x="" y="">n06.oop.App</node>
+            <node x="" y="">n06.oop.model</node>
+            <node x="" y="">n06.oop.database</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="142.0" y="226.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MODULES/mdl-oop">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MODULES</ID>
+          <OriginalElement>mdl-oop</OriginalElement>
+          <nodes>
+            <node x="" y="">mdl-oop</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="452.0" y="127.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Test dependencies</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/n06.oop.generator">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>n06.oop.generator</OriginalElement>
+          <nodes>
+            <node x="0.0" y="153.0">n06.oop.generator.DatabaseGenerator</node>
+            <node x="17.0" y="79.0">n06.oop.generator.iml</node>
+            <node x="0.0" y="0.0">n06.oop.generator.interfaces</node>
+            <node x="0.0" y="227.0">n06.oop.generator.GeneratorFactory</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="n06.oop.generator.iml" target="n06.oop.generator.interfaces">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-157.0" y="113.0" />
+          <SelectedNodes>
+            <node>n06.oop.generator.iml</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/n06.oop.generator.iml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>n06.oop.generator.iml</OriginalElement>
+          <nodes>
+            <node x="612.0" y="225.5">n06.oop.generator.iml.PersonGenerator</node>
+            <node x="156.0" y="225.5">n06.oop.generator.iml.OrganizationGenerator</node>
+            <node x="165.5" y="305.5">n06.oop.generator.DatabaseGenerator</node>
+            <node x="729.0" y="105.5">n06.oop.generator.iml.CountryGenerator</node>
+            <node x="178.0" y="105.5">n06.oop.generator.iml.BaseGenerator</node>
+            <node x="-22.5" y="105.5">n06.oop.generator.iml.TimeGenerator</node>
+            <node x="431.0" y="290.5">n06.oop.generator.IGenerator</node>
+            <node x="368.0" y="25.5">n06.oop.generator.iml.LocationGenerator</node>
+            <node x="-29.0" y="305.5">n06.oop.generator.GeneratorFactory</node>
+            <node x="176.0" y="-14.5">n06.oop.generator.iml.EventGenerator</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="n06.oop.generator.iml.TimeGenerator" target="n06.oop.generator.iml.BaseGenerator">
+              <point x="62.5" y="0.0" />
+              <point x="-62.0" y="0.0" />
+            </edge>
+            <edge source="n06.oop.generator.iml.PersonGenerator" target="n06.oop.generator.iml.BaseGenerator">
+              <point x="0.0" y="-14.5" />
+              <point x="680.0" y="124.0" />
+              <point x="62.0" y="4.0" />
+            </edge>
+            <edge source="n06.oop.generator.iml.BaseGenerator" target="n06.oop.generator.IGenerator">
+              <point x="62.0" y="8.0" />
+              <point x="480.0" y="128.0" />
+              <point x="0.0" y="-14.5" />
+            </edge>
+            <edge source="n06.oop.generator.iml.OrganizationGenerator" target="n06.oop.generator.iml.BaseGenerator">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="n06.oop.generator.iml.CountryGenerator" target="n06.oop.generator.iml.BaseGenerator">
+              <point x="-71.0" y="0.0" />
+              <point x="62.0" y="0.0" />
+            </edge>
+            <edge source="n06.oop.generator.iml.LocationGenerator" target="n06.oop.generator.iml.BaseGenerator">
+              <point x="0.0" y="14.5" />
+              <point x="440.0" y="112.0" />
+              <point x="62.0" y="-8.0" />
+            </edge>
+            <edge source="n06.oop.generator.iml.EventGenerator" target="n06.oop.generator.iml.BaseGenerator">
+              <point x="0.0" y="14.5" />
+              <point x="0.0" y="-14.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.8" x="240.0" y="87.0" />
+          <SelectedNodes>
+            <node>n06.oop.generator.IGenerator</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/data/person.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/Time.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/TimeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="391">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/data/event.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/relation/rules.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="95" column="11" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/PersonGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="13" lean-forward="true" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+        <state relative-caret-position="157">
+          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -822,51 +1016,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/BaseGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2455#2456#0" expanded="true" />
-            <element signature="e#2482#2483#0" expanded="true" />
-            <element signature="e#2527#2528#0" expanded="true" />
-            <element signature="e#2554#2555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/GeneratorFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+        <state relative-caret-position="1007">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/ConnectionManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/IGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3124#3125#0" expanded="true" />
-            <element signature="e#3185#3186#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/database/Setting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="60" lean-forward="true" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/interfaces/IGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="72">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/DatabaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-880">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="51" column="33" selection-start-line="45" selection-start-column="30" selection-end-line="51" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -885,8 +1073,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/PROP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="94" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="11" selection-end-column="94" />
+        <state relative-caret-position="221">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -895,57 +1083,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/vocabulary/ENT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="46" />
+        <state relative-caret-position="255">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/utils/Utils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/model/entities/BaseEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/generator/iml/OrganizationGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/n06/oop/relationship/RelationGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>oop</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: cglib:cglib:3.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

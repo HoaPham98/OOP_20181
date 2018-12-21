@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TimeGenerator extends BaseGenerator<Time> {
 
-    static final DateTimeFormatter DATE_FORMMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//    static final DateTimeFormatter DATE_FORMMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public TimeGenerator() {
         super();
@@ -27,7 +27,7 @@ public class TimeGenerator extends BaseGenerator<Time> {
             Time time = new Time();
             conn.begin();
             for (int i = 0; i < num; i++) {
-                int year = ThreadLocalRandom.current().nextInt(2015, 2019);
+                int year = ThreadLocalRandom.current().nextInt(1940, 2019);
                 int day = ThreadLocalRandom.current().nextInt(1, 366);
 
                 LocalDate date = LocalDate.ofYearDay(year, day);

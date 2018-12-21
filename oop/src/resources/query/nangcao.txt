@@ -1,0 +1,77 @@
+﻿- Những địa điểm tổ chức của 'Lễ hội văn hóa và ẩm thực Việt Nam – Hàn Quốc 2018' và tên tổ chức tổ chức và những người sinh ra ở đó
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+
+select distinct ?personName ?locationName ?organizationName where{  
+	?location rel:là_nơi_diễn_ra_sự_kiện ?event.
+    ?location prop:name ?locationName.
+    ?event prop:name 'Lễ hội văn hóa và ẩm thực Việt Nam – Hàn Quốc 2018'.
+    ?location rel:là_nơi_sinh_sống_của ?person.
+    ?person prop:name ?personName.
+    ?event rel:tài_trợ_bởi ?organization.
+    ?organization prop:name ?organizationName
+}
+
+- Những sự kiện 'Theresa James' đã tham dự được tổ chức vào năm 2015
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+
+select distinct ?Event where{  
+	?person prop:name 'Theresa James';  
+	rel:tham_dự_sự_kiện ?event.  
+	?event rel:tổ_chức_vào_ngày ?time;
+	prop:name ?Event.
+    ?time prop:date ?date
+	filter strstarts(str(?date), str(2015)).
+}
+
+- Những người là bác của CEO của Apple và mất tại Sweden
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+
+select ?name where {
+    ?person prop:name ?name ;
+            rel:mất_tại ?country;
+        rel:là_bác_của ?person2 .  
+    ?person2 rel:là_CEO_của ?or .
+    ?or prop:name 'Apple' .
+    ?country prop:name 'Sweden'.
+}
+
+- Số người tham gia từng sự kiện được tổ chức vào năm 2016
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+
+select distinct ?event (count(?person) as ?count)  where{
+	?personID rel:tham_dự_sự_kiện ?eventID;
+	prop:name ?person.
+	?eventID rel:tổ_chức_vào_ngày ?time;
+	prop:name ?event.
+    ?time prop:date ?date .
+	filter strstarts(str(?date), str(2016))
+}
+group by ?event
+
+- Số lượng mỗi loại entity có trong database
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix model: <http://nhom06/model#>
+SELECT ?type (count(?type) as ?count)  WHERE {
+    ?x rdf:type ?type
+    FILTER strstarts(str(?x), "http://nhom06/model#")
+}
+GROUP BY ?type
+
+- Tên các nước có dân số trên 80,000,000 và số lượng các tổ chức có giá trên trên 900,000,000 USD mà nước đó đầu tư vào
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX prop: <http://nhom06/property#>
+
+select distinct ?name (count(?company) as ?count) where {
+    ?country prop:name ?name;
+             rel:đầu_tư_vào ?or;
+             prop:population ?population.
+    ?or prop:valuation ?value;
+        prop:name ?company
+    filter (?population > 80000000 && ?value > 900000000).
+}
+group by ?name
+

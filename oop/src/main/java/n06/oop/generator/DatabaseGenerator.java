@@ -2,7 +2,6 @@ package n06.oop.generator;
 
 import n06.oop.database.ConnectionManager;
 import n06.oop.database.Setting;
-import n06.oop.generator.interfaces.IGenerator;
 import n06.oop.relationship.RelationGenerator;
 import n06.oop.utils.Utils;
 import org.slf4j.Logger;
@@ -10,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,13 +21,18 @@ public class DatabaseGenerator {
 
     public static final String[] TYPES = {"person", "country", "location", "event", "organization", "time"};
 
+    /**
+     * Tạo giả lập database
+     * @param numEntity số lượng thực thể
+     * @param numRelation số lượng quan hệ
+     */
     public void generator(int numEntity, int numRelation) {
 
         ConnectionManager.getConnection().clear();
 
         List<IGenerator> iGenerators = new ArrayList<>();
         for (String type: TYPES) {
-            IGenerator iGenerator = GeneratorFactory.getDao(type);
+            IGenerator iGenerator = GeneratorFactory.getGenerator(type);
             iGenerators.add(iGenerator);
         }
 
@@ -63,13 +68,14 @@ public class DatabaseGenerator {
             futures = new ArrayList<>();
 
             final List<Integer> parts2 = Utils.splitIntoParts(numRelation, Setting.MAX_CONCURRENT);
+            Map<String, Integer> sizeOfType = Utils.getSizeOfType();
 
             for (int i=0; i < Setting.MAX_CONCURRENT; i++) {
                 int finalI = i;
                 Runnable runnable = () -> {
                     long start = System.currentTimeMillis();
 
-                    RelationGenerator relationGenerator = new RelationGenerator();
+                    RelationGenerator relationGenerator = new RelationGenerator(sizeOfType);
                     relationGenerator.generateRelation(parts2.get(finalI));
 
                     long finish = System.currentTimeMillis();

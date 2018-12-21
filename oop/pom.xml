@@ -40,12 +40,6 @@
 			<artifactId>graphdb-free-runtime</artifactId>
 			<version>8.7.0</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.cyberborean</groupId>
-			<artifactId>rdfbeans</artifactId>
-			<version>2.2</version>
-		</dependency>
         <dependency>
             <groupId>org.codehaus.jettison</groupId>
             <artifactId>jettison</artifactId>
