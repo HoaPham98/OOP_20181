@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class QueryUtils {
     public static QueryResult query(String sparql) throws QueryEvaluationException {
-        RepositoryConnection conn = ConnectionManager.getConnection();
+        RepositoryConnection conn = ConnectionManager.getInstance().getConnection();
 
         long t1 = System.currentTimeMillis();
 

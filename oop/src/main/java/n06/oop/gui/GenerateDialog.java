@@ -6,7 +6,7 @@
 package n06.oop.gui;
 
 import n06.oop.database.ConnectionManager;
-import n06.oop.database.Setting;
+import n06.oop.config.Setting;
 import n06.oop.generator.DatabaseGenerator;
 
 import javax.swing.*;
@@ -192,10 +192,11 @@ public class GenerateDialog extends javax.swing.JDialog implements PropertyChang
         System.out.println(repositoryId);
         System.out.println("" + numEntities + "-" + numRelations);
 
-        ConnectionManager.setRepository(repositoryId);
+        ConnectionManager.getInstance().setRepository(repositoryId);
     }
     
     public void btnGenerateAction() {
+        ConnectionManager.getInstance().getConnection().clear();
         jButton1.setEnabled(false);
 
         long t1 = System.currentTimeMillis();

@@ -1,4 +1,4 @@
-package n06.oop.generator.iml;
+package n06.oop.generator.impl;
 
 import n06.oop.model.entities.Country;
 import n06.oop.model.entities.Source;
@@ -9,7 +9,6 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.rdf4j.model.Model;
-import org.eclipse.rdf4j.model.util.ModelBuilder;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import java.io.IOException;
@@ -54,32 +53,15 @@ public class CountryGenerator extends BaseGenerator<Country> {
     }
 
     @Override
-    public void generateData(int num) {
-        Country country = null;
-        conn.begin();
-        long start = System.currentTimeMillis();
-        try {
-            for (int count = 0; count < num; count++) {
-                int rand = ThreadLocalRandom.current().nextInt(0, countries.size());
+    public Country createEntity(int count) {
+        int rand = ThreadLocalRandom.current().nextInt(0, countries.size());
 
-                country = countries.get(rand);
-                country.setId("COUNTRY_" + count);
-                List<Source> sources = generateSources(ThreadLocalRandom.current().nextInt(1,6));
-                country.setSources(sources);
-                Model model = createModel(country);
-                if (model.size() >= MAX_STATMENT){
-                    conn.add(model);
-                    builder = new ModelBuilder();
-                }
-            }
-            conn.add(builder.build());
-            conn.commit();
-            long end = System.currentTimeMillis();
-            long time = end - start;
-            System.out.println(time);
-        } catch (Throwable t) {
-            conn.rollback();
-        }
+        Country country = countries.get(rand);
+        country.setId("COUNTRY_" + count);
+        List<Source> sources = generateSources();
+        country.setSources(sources);
+
+        return country;
     }
 
     @Override

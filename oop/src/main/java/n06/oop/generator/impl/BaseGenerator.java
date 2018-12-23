@@ -1,4 +1,4 @@
-package n06.oop.generator.iml;
+package n06.oop.generator.impl;
 
 import n06.oop.database.ConnectionManager;
 import n06.oop.model.entities.BaseEntity;
@@ -17,23 +17,22 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
 
-    static final int MAX_STATMENT = 20000;
+    static final int MAX_STATMENT = 200000;
 
     protected List<String> dataList;
     protected String filePath = "/data";
     protected RepositoryConnection conn;
     protected ModelBuilder builder;
     protected ValueFactory factory;
-    protected int count;
 
     public BaseGenerator() {
-        conn = ConnectionManager.getConnection();
+        conn = ConnectionManager.getInstance().getConnection();
         factory = SimpleValueFactory.getInstance();
         builder = new ModelBuilder();
-        count = 0;
     }
 
     public void init(String filePath) {
@@ -53,7 +52,8 @@ public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
         }
     }
 
-    public List<Source> generateSources(int num) {
+    public List<Source> generateSources() {
+        int num = ThreadLocalRandom.current().nextInt(1,4);
         List<Source> sources = new ArrayList<>();
         for(int i=0; i<num; i++) {
             Source source = new Source();
@@ -65,7 +65,28 @@ public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
 
     @Override
     public void generateData(int num) {
+        conn.begin();
+        try {
+            for (int count = 0; count < num; count++) {
+                T item = createEntity(count);
+                Model model = createModel(item);
+                if (model.size() >= MAX_STATMENT){
+                    conn.add(model);
+                    builder = new ModelBuilder();
+                }
+            }
+            conn.add(builder.build());
+            conn.commit();
+//            conn.close();
+        } catch (Throwable t) {
+            conn.rollback();
+            t.printStackTrace();
+        }
+    }
 
+    @Override
+    public T createEntity(int count) {
+        return null;
     }
 
     @Override

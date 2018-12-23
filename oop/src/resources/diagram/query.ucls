@@ -3,11 +3,11 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="n06.oop.query.QueryResult" project="oop" 
     file="/oop/src/main/java/n06/oop/query/QueryResult.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="194" x="41" y="194"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="112" width="195" x="41" y="265"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
   <class id="2" language="java" name="n06.oop.query.QueryUtils" project="oop" 
@@ -29,12 +29,12 @@
     </display>  
   </class>  
   <dependency id="4">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="5">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="5">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
   </dependency>  
   <dependency id="6">    
     <end type="SOURCE" refId="3"/>    

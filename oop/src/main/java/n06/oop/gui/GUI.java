@@ -5,7 +5,7 @@ package n06.oop.gui;/*
  */
 
 import n06.oop.database.ConnectionManager;
-import n06.oop.database.Setting;
+import n06.oop.config.Setting;
 import n06.oop.query.QueryResult;
 import n06.oop.query.QueryUtils;
 import org.eclipse.rdf4j.query.QueryEvaluationException;
@@ -14,6 +14,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -323,6 +325,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public void repositorySelection() {
+        Collections.list(btnGroupData.getElements()).forEach(btn -> {
+            btn.setEnabled(false);
+        });
         String repositoryId = null;
         if (radio100.isSelected()) {
             repositoryId = Setting.REPO_NAME_100_200;
@@ -338,7 +343,10 @@ public class GUI extends javax.swing.JFrame {
 
         System.out.println(repositoryId);
 
-        ConnectionManager.setRepository(repositoryId);
+        ConnectionManager.getInstance().setRepository(repositoryId);
+        Collections.list(btnGroupData.getElements()).forEach(btn -> {
+            btn.setEnabled(true);
+        });
     }
 
     public void queryTypeSeletion() {

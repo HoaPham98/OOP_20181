@@ -1,6 +1,6 @@
 package n06.oop.generator;
 
-import n06.oop.generator.iml.*;
+import n06.oop.generator.impl.*;
 
 import java.util.WeakHashMap;
 

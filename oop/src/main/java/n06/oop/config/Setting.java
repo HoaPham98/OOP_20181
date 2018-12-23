@@ -1,4 +1,4 @@
-package n06.oop.database;
+package n06.oop.config;
 
 public class Setting {
 

@@ -16,11 +16,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import static n06.oop.database.Setting.TYPES;
+import static n06.oop.config.Setting.TYPES;
 
 public class RelationGenerator {
     public static final Map<String, Map<String, List<String>>> RULES;
-    static final int MAX_STATEMENT = 2000;
+    static final int MAX_STATEMENT = 200000;
 
     private Map<String, Integer> sizeOfType;
     private RepositoryConnection conn;
@@ -56,7 +56,7 @@ public class RelationGenerator {
 
     public RelationGenerator(Map<String, Integer> sizeOfType) {
         // Khởi tạo connection
-        conn = ConnectionManager.getConnection();
+        conn = ConnectionManager.getInstance().getConnection();
         factory = SimpleValueFactory.getInstance();
         this.sizeOfType = sizeOfType;
     }
@@ -88,7 +88,7 @@ public class RelationGenerator {
                 model.add(iri1, iriRel, iri2);
 
                 countStatement++;
-                if (countStatement == MAX_STATEMENT) {
+                if (countStatement >= MAX_STATEMENT) {
                     conn.add(model);
                     model.clear();
                     countStatement = 0;

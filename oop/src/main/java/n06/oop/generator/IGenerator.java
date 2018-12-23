@@ -11,12 +11,19 @@ public interface IGenerator<T extends BaseEntity> {
     void generateData(int num);
 
     /**
+     * Tạo thực thể
+     * @param count số thứ tự dùng cho id
+     * @return thực thể
+     */
+    T createEntity(int count);
+
+    /**
      * Tạo model từ đối tượng
      * @param item dối tượng cần tạo model
      * @return model
      */
     Model createModel(T item);
-    
+
     /**
      * Get giá trị tên của loại thực thể
      * @return tên

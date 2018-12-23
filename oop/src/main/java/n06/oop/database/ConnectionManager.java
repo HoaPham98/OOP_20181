@@ -1,95 +1,60 @@
 package n06.oop.database;
 
-import org.eclipse.rdf4j.model.Model;
-import org.eclipse.rdf4j.model.Resource;
-import org.eclipse.rdf4j.model.Statement;
-import org.eclipse.rdf4j.model.impl.TreeModel;
-import org.eclipse.rdf4j.model.vocabulary.RDF;
+import n06.oop.config.Setting;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
-import org.eclipse.rdf4j.repository.config.RepositoryConfig;
-import org.eclipse.rdf4j.repository.config.RepositoryConfigSchema;
+import org.eclipse.rdf4j.repository.manager.RemoteRepositoryManager;
 import org.eclipse.rdf4j.repository.manager.RepositoryManager;
-import org.eclipse.rdf4j.repository.manager.RepositoryProvider;
-import org.eclipse.rdf4j.rio.RDFFormat;
-import org.eclipse.rdf4j.rio.RDFParser;
-import org.eclipse.rdf4j.rio.Rio;
-import org.eclipse.rdf4j.rio.helpers.StatementCollector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
 
 public class ConnectionManager {
 
     private static Logger logger =
             LoggerFactory.getLogger(ConnectionManager.class);
 
-    private static RepositoryManager repositoryManager;
-    public static String repositoryId;
+    private RepositoryManager repositoryManager;
+    private String repositoryId;
+    private Repository repository;
+    private RepositoryConnection connection;
 
+    private static ConnectionManager instance = new ConnectionManager();
+
+    public static ConnectionManager getInstance() {
+        return instance;
+    }
 
     /**
      *  Thiết lập kết nối tới database
      */
-    static {
-        try {
-            // Instantiate a local repository manager and initialize it
-            RepositoryManager repositoryManager  = RepositoryProvider.getRepositoryManager(Setting.URL);
-            repositoryManager.initialize();
-            repositoryManager.getAllRepositories();
+    public ConnectionManager() {
+        RepositoryManager repositoryManager  = new RemoteRepositoryManager(Setting.URL);
+        repositoryManager.initialize();
+        repositoryId = Setting.REPO_NAME_15m_17m;
+        setRepositoryManager(repositoryManager);
 
-            // Instantiate a repository graph model
-            TreeModel graph = new TreeModel();
-
-            // Read repository configuration file
-            InputStream config = ConnectionManager.class.getResourceAsStream("/repo-defaults.ttl");
-            RDFParser rdfParser = Rio.createParser(RDFFormat.TURTLE);
-            rdfParser.setRDFHandler(new StatementCollector(graph));
-
-            rdfParser.parse(config, RepositoryConfigSchema.NAMESPACE);
-
-            config.close();
-
-            // Retrieve the repository node as a resource
-            Model model = graph.filter(null, RDF.TYPE, RepositoryConfigSchema.REPOSITORY);
-            Iterator<Statement> iterator = model.iterator();
-            if (!iterator.hasNext())
-                throw new RuntimeException("Oops, no <http://www.openrdf.org/config/repository#> subject found!");
-            Statement statement = iterator.next();
-            Resource repositoryNode =  statement.getSubject();
-
-            // Create a repository configuration object and add it to the repositoryManager
-            RepositoryConfig repositoryConfig = RepositoryConfig.create(graph, repositoryNode);
-            repositoryManager.addRepositoryConfig(repositoryConfig);
-
-            ConnectionManager.setRepositoryManager(repositoryManager);
-            ConnectionManager.setRepository(Setting.REPO_NAME);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        repository = repositoryManager.getRepository(repositoryId);
     }
 
-    private ConnectionManager() {
-
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
-    public static void setRepositoryManager(RepositoryManager repository) {
-        ConnectionManager.repositoryManager = repository;
+    public void setRepository(String repositoryId) {
+        this.repositoryId = repositoryId;
+        repository = repositoryManager.getRepository(repositoryId);
+        connection = repository.getConnection();
+        System.out.println(repository.toString());
     }
 
-    public static void setRepository(String repositoryId) {
-        ConnectionManager.repositoryId = repositoryId;
+    public Repository getRepository() {
+        return repository;
     }
 
-    public static RepositoryConnection getConnection() {
-        Repository repository = repositoryManager.getRepository(repositoryId);
-        RepositoryConnection conn = repository.getConnection();
+    public RepositoryConnection getConnection() {
+        connection = connection != null ? connection : repository.getConnection();
 
-        return conn;
+        return connection;
     }
 
     public static void release() {

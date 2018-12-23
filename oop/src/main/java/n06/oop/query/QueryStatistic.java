@@ -1,7 +1,7 @@
 package n06.oop.query;
 
 import dnl.utils.text.table.TextTable;
-import n06.oop.database.Setting;
+import n06.oop.config.Setting;
 
 import java.util.*;
 
