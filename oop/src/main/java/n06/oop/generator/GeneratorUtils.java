@@ -1,4 +1,4 @@
-package n06.oop.utils;
+package n06.oop.generator;
 
 import n06.oop.database.ConnectionManager;
 import n06.oop.model.vocabulary.ENT;
@@ -12,9 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static n06.oop.database.Setting.TYPES;
 
-public class Utils {
-    public static final String UTF8_BOM = "\uFEFF";
-
+public class GeneratorUtils {
     /**
      * Lấy ngẫu nhiên 1 phần tử trong list
      * @param list
@@ -103,12 +101,5 @@ public class Utils {
         }
 
         return sizeOfType;
-    }
-
-    public static String removeUTF8BOM(String s) {
-        if (s.startsWith(UTF8_BOM)) {
-            s = s.substring(1);
-        }
-        return s;
     }
 }

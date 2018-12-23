@@ -38,8 +38,12 @@ public class OrganizationGenerator extends BaseGenerator<Organization> {
 
                 Model model = createModel(organization);
 
-                conn.add(model);
+                if (model.size() >= MAX_STATMENT){
+                    conn.add(model);
+                    builder = new ModelBuilder();
+                }
             }
+            conn.add(builder.build());
             conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
@@ -52,7 +56,6 @@ public class OrganizationGenerator extends BaseGenerator<Organization> {
 
     @Override
     public Model createModel(Organization item) {
-        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.ORGANIZATION)
                 .add(PROP.NAME, item.getName())

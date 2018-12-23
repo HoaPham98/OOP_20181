@@ -1,4 +1,4 @@
-package n06.oop.relationship;
+package n06.oop.generator;
 
 import n06.oop.database.ConnectionManager;
 import n06.oop.model.vocabulary.ENT;
@@ -7,23 +7,20 @@ import org.apache.commons.io.IOUtils;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.Statement;
-import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.*;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.TreeModel;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
 import static n06.oop.database.Setting.TYPES;
-
-import n06.oop.utils.Utils;
 
 public class RelationGenerator {
     public static final Map<String, Map<String, List<String>>> RULES;
+    static final int MAX_STATEMENT = 2000;
 
     private Map<String, Integer> sizeOfType;
     private RepositoryConnection conn;
@@ -66,16 +63,19 @@ public class RelationGenerator {
 
     public void generateRelation(int num) {
         try {
+            Model model = new TreeModel();
+            int countStatement = 0;
             conn.begin();
-            IntStream.range(0, num).forEach(count -> {
-                String type1 = Utils.getRandomFromList(TYPES);
-                String type2 = Utils.getRandomFromList(TYPES);
+            for (int count =0; count < num; count ++) {
+                String type1 = GeneratorUtils.getRandomFromList(TYPES);
+                String type2 = GeneratorUtils.getRandomFromList(TYPES);
                 List<String> rels = RULES.get(type1).get(type2);
                 if (rels.size() == 0 || sizeOfType.get(type1) == 0 || sizeOfType.get(type2) == 0) {
-                    return;
+                    count--;
+                    continue;
                 }
-                String relation = Utils.getRandomFromList(rels);
-                relation = Utils.nameToIRIString(relation);
+                String relation = GeneratorUtils.getRandomFromList(rels);
+                relation = GeneratorUtils.nameToIRIString(relation);
 
                 String id1 = type1.toUpperCase() + "_" + ThreadLocalRandom.current().nextInt(0, sizeOfType.get(type1));
                 String id2 = type2.toUpperCase() + "_" + ThreadLocalRandom.current().nextInt(0, sizeOfType.get(type2));
@@ -85,12 +85,16 @@ public class RelationGenerator {
 
                 IRI iriRel = factory.createIRI(REL.NAMESPACE, relation);
 
-                Statement nameStatement = factory.createStatement(iri1, iriRel, iri2);
+                model.add(iri1, iriRel, iri2);
 
-                conn.add(nameStatement);
-
-
-            });
+                countStatement++;
+                if (countStatement == MAX_STATEMENT) {
+                    conn.add(model);
+                    model.clear();
+                    countStatement = 0;
+                }
+            }
+            conn.add(model);
             conn.commit();
         } catch (Throwable t) {
             conn.rollback();

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="n06.oop.model.entities.BaseEntity" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/BaseEntity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="177" x="931" y="-177"/>    
+    <position height="-1" width="-1" x="476" y="-15"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="n06.oop.model.entities.Event" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Event.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="104" x="392" y="160"/>    
+    <position height="-1" width="-1" x="824" y="18"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="n06.oop.model.entities.Country" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Country.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="139" x="536" y="160"/>    
+    <position height="-1" width="-1" x="214" y="-58"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="n06.oop.model.entities.Source" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Source.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="176" x="715" y="160"/>    
+    <position height="-1" width="-1" x="232" y="233"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="n06.oop.model.entities.Time" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Time.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="142" x="931" y="160"/>    
+    <position height="-1" width="-1" x="461" y="328"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="n06.oop.model.entities.Organization" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Organization.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="127" x="1113" y="160"/>    
+    <position height="-1" width="-1" x="645" y="330"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="n06.oop.model.entities.Location" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Location.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="142" x="1280" y="160"/>    
+    <position height="-1" width="-1" x="815" y="330"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="n06.oop.model.entities.Person" project="oop" 
     file="/oop/src/main/java/n06/oop/model/entities/Person.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="104" x="1462" y="160"/>    
+    <position height="-1" width="-1" x="826" y="137"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -74,31 +74,35 @@
     </display>  
   </class>  
   <generalization id="9">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="10">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="11">    
+  <generalization id="10">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="12">    
+  <generalization id="11">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="12">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="13">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="13" name="sources"/>      
-      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+      <attribute id="14" name="sources">        
+        <position height="0" width="0" x="-28" y="-116"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-28" y="-116"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
   <generalization id="16">    
-    <end type="SOURCE" refId="8"/>    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="17">    

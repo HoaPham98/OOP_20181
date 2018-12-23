@@ -5,6 +5,15 @@ public class QueryResult {
     private String[] header;
     private String[][] data;
 
+    public QueryResult() {
+    }
+
+    public QueryResult(long timeExec, String[] header, String[][] data) {
+        this.timeExec = timeExec;
+        this.header = header;
+        this.data = data;
+    }
+
     public long getTimeExec() {
         return timeExec;
     }

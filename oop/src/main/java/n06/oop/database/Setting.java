@@ -1,8 +1,5 @@
 package n06.oop.database;
 
-import org.eclipse.rdf4j.model.Namespace;
-import org.eclipse.rdf4j.model.impl.SimpleNamespace;
-
 public class Setting {
 
     /**
@@ -25,4 +22,6 @@ public class Setting {
      *  CONST
      */
     public static final String[] TYPES = {"person", "country", "location", "event", "organization", "time"};
+    public final static String BASIC_FILE = "/queries/coban.txt";
+    public final static String ADVANCE_FILE = "/queries/nangcao.txt";
 }

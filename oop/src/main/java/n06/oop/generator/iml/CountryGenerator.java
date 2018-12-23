@@ -67,8 +67,12 @@ public class CountryGenerator extends BaseGenerator<Country> {
                 List<Source> sources = generateSources(ThreadLocalRandom.current().nextInt(1,6));
                 country.setSources(sources);
                 Model model = createModel(country);
-                conn.add(model);
+                if (model.size() >= MAX_STATMENT){
+                    conn.add(model);
+                    builder = new ModelBuilder();
+                }
             }
+            conn.add(builder.build());
             conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
@@ -80,7 +84,6 @@ public class CountryGenerator extends BaseGenerator<Country> {
 
     @Override
     public Model createModel(Country item) {
-        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.COUNTRY)
                 .add(PROP.NAME, item.getName())

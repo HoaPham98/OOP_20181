@@ -16,7 +16,7 @@ public interface IGenerator<T extends BaseEntity> {
      * @return model
      */
     Model createModel(T item);
-
+    
     /**
      * Get giá trị tên của loại thực thể
      * @return tên

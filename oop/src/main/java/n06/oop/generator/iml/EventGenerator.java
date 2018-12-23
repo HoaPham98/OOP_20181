@@ -37,8 +37,12 @@ public class EventGenerator extends BaseGenerator<Event> {
 
                 Model model = createModel(event);
 
-                conn.add(model);
+                if (model.size() >= MAX_STATMENT){
+                    conn.add(model);
+                    builder = new ModelBuilder();
+                }
             }
+            conn.add(builder.build());
             conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
@@ -50,7 +54,6 @@ public class EventGenerator extends BaseGenerator<Event> {
 
     @Override
     public Model createModel(Event item) {
-        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.EVENT)
                 .add(PROP.NAME, item.getName())

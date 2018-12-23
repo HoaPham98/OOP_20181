@@ -13,17 +13,17 @@ select distinct ?personName ?locationName ?organizationName where{
     ?organization prop:name ?organizationName
 }
 
-- Những sự kiện 'Theresa James' đã tham dự được tổ chức vào năm 2015
+- Danh sách những người và tên sự kiện đã tham dự được tổ chức vào năm 2013
 PREFIX prop: <http://nhom06/property#>
 PREFIX rel: <http://nhom06/relationship#>
 
-select distinct ?Event where{  
-	?person prop:name 'Theresa James';  
-	rel:tham_dự_sự_kiện ?event.  
+select distinct ?name ?Event where{
+	?person prop:name ?name;
+	rel:tham_dự_sự_kiện ?event.
 	?event rel:tổ_chức_vào_ngày ?time;
 	prop:name ?Event.
     ?time prop:date ?date
-	filter strstarts(str(?date), str(2015)).
+	filter strstarts(str(?date), str(2013)).
 }
 
 - Những người là bác của CEO của Apple và mất tại Sweden
@@ -96,4 +96,22 @@ select distinct ?p ?name ?date where{
     prop:name ?p.
     ?time prop:date ?date
     filter regex(str(?date), '2015-07')
+}
+
+- Danh sách 2 nước cùng tham gia 1 sự kiện nào đó và nước thứ nhất có dân số nhiều hơn nước thứ 2
+PREFIX prop: <http://nhom06/property#>
+PREFIX rel: <http://nhom06/relationship#>
+PREFIX model: <http://nhom06/model#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+select ?name1 ?name2 where {
+    ?c1 rdf:type model:country;
+           rel:tham_dự ?event;
+           prop:name ?name1;
+           prop:population ?po1.
+    ?c2 rdf:type model:country;
+           rel:tham_dự ?event;
+           prop:name ?name2;
+           prop:population ?po2.
+    filter (?name1 != ?name2 && ?po1 > ?po2)
 }

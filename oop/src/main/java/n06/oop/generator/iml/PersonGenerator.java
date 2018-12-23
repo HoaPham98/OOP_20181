@@ -36,9 +36,12 @@ public class PersonGenerator extends BaseGenerator<Person> {
                 person.setSources(sources);
 
                 Model model = createModel(person);
-
-                conn.add(model);
+                if (model.size() >= MAX_STATMENT){
+                    conn.add(model);
+                    builder = new ModelBuilder();
+                }
             }
+            conn.add(builder.build());
             conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
@@ -51,7 +54,6 @@ public class PersonGenerator extends BaseGenerator<Person> {
 
     @Override
     public Model createModel(Person item) {
-        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.PERSON)
                 .add(PROP.NAME, item.getName())

@@ -4,8 +4,6 @@ import n06.oop.database.ConnectionManager;
 import n06.oop.model.entities.BaseEntity;
 import n06.oop.model.entities.Source;
 import n06.oop.generator.IGenerator;
-import n06.oop.model.vocabulary.ENT;
-import n06.oop.model.vocabulary.PROP;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
@@ -22,16 +20,20 @@ import java.util.List;
 
 public class BaseGenerator<T extends BaseEntity> implements IGenerator<T> {
 
+    static final int MAX_STATMENT = 20000;
+
     protected List<String> dataList;
     protected String filePath = "/data";
     protected RepositoryConnection conn;
     protected ModelBuilder builder;
     protected ValueFactory factory;
+    protected int count;
 
     public BaseGenerator() {
         conn = ConnectionManager.getConnection();
-        builder = new ModelBuilder().setNamespace(ENT.NS).setNamespace(PROP.NS);
         factory = SimpleValueFactory.getInstance();
+        builder = new ModelBuilder();
+        count = 0;
     }
 
     public void init(String filePath) {

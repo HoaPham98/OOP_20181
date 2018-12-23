@@ -1,25 +1,18 @@
 package n06.oop.query;
 
 import dnl.utils.text.table.TextTable;
-import n06.oop.utils.Utils;
+import n06.oop.database.Setting;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class QueryStatistic {
-    final static String BASIC_FILE = "/query/coban.txt";
-    final static String ADVANCE_FILE = "/query/nangcao.txt";
 
-    Map<String, String> basicQueries;
-    Map<String, String> advanceQueries;
+    private Map<String, String> basicQueries;
+    private Map<String, String> advanceQueries;
 
     public QueryStatistic() {
-        basicQueries = loadData(BASIC_FILE);
-        advanceQueries = loadData(ADVANCE_FILE);
+        basicQueries = QueryUtils.loadData(Setting.BASIC_FILE);
+        advanceQueries = QueryUtils.loadData(Setting.ADVANCE_FILE);
     }
 
     public void statistic() {
@@ -44,47 +37,11 @@ public class QueryStatistic {
 
         for(int i=0; i<queries.size(); i++) {
             String sql = queries.get(i);
-            QueryResult result = Query.query(sql);
+            QueryResult result = QueryUtils.query(sql);
             times[0][i] = "" + result.getTimeExec() + " ms";
         }
 
         TextTable tt = new TextTable(headers, times);
         tt.printTable();
-    }
-
-    private Map<String, String> loadData(String file) {
-        Map<String, String> map = new LinkedHashMap<>();
-        try {
-            InputStream inputStream = this.getClass().getResourceAsStream(file);
-            InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-            BufferedReader reader = new BufferedReader(streamReader);
-            StringBuilder stringBuilder = new StringBuilder();
-            String name = null;
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = Utils.removeUTF8BOM(line);
-                if (line.startsWith("-")) {
-                    String sql = stringBuilder.toString();
-                    if (name != null && !name.isEmpty() && !sql.isEmpty()) {
-                        map.put(name, sql);
-                        stringBuilder = new StringBuilder();
-                    }
-                    name = line;
-                    continue;
-                }
-                stringBuilder.append("\n");
-                stringBuilder.append(line);
-            }
-            String sql = stringBuilder.toString();
-            if (name != null && !name.isEmpty() && !sql.isEmpty()) {
-                map.put(name, sql);
-                stringBuilder = new StringBuilder();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return map;
     }
 }

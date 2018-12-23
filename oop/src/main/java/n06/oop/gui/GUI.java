@@ -1,8 +1,20 @@
-/*
+package n06.oop.gui;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import n06.oop.database.ConnectionManager;
+import n06.oop.database.Setting;
+import n06.oop.query.QueryResult;
+import n06.oop.query.QueryUtils;
+import org.eclipse.rdf4j.query.QueryEvaluationException;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import java.awt.*;
+import java.util.Map;
 
 /**
  *
@@ -10,11 +22,22 @@
  */
 public class GUI extends javax.swing.JFrame {
 
+    private Map.Entry[] basicQueries;
+    private Map.Entry[] advanceQueries;
+
+    static final String prefixes = "PREFIX prop: <http://nhom06/property#>\n" +
+            "PREFIX rel: <http://nhom06/relationship#>\n" +
+            "PREFIX model: <http://nhom06/model#>\n" +
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
+
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        init();
+        repositorySelection();
+        queryTypeSeletion();
     }
 
     /**
@@ -29,18 +52,21 @@ public class GUI extends javax.swing.JFrame {
 
         btnGroupData = new javax.swing.ButtonGroup();
         btnGroupQuery = new javax.swing.ButtonGroup();
+        jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         radio100 = new javax.swing.JRadioButton();
         radio5k = new javax.swing.JRadioButton();
         radio60k = new javax.swing.JRadioButton();
         radio1M = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         radioBasic = new javax.swing.JRadioButton();
         radioAdvance = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         queryCombobox = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         queryTextArea = new javax.swing.JTextArea();
@@ -50,10 +76,14 @@ public class GUI extends javax.swing.JFrame {
         lbTime = new javax.swing.JLabel();
         tableQuery = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tập dữ liệu"));
         jPanel2.setLayout(new java.awt.GridLayout(4, 1));
@@ -95,7 +125,16 @@ public class GUI extends javax.swing.JFrame {
         });
         jPanel2.add(radio1M);
 
-        jPanel1.add(jPanel2, new java.awt.GridBagConstraints());
+        btnGroupData.add(jRadioButton2);
+        jRadioButton2.setText("15M - 17M");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jRadioButton2);
+
+        jPanel1.add(jPanel2);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Loại truy vấn"));
         jPanel3.setLayout(new java.awt.GridLayout(4, 1));
@@ -119,30 +158,39 @@ public class GUI extends javax.swing.JFrame {
         });
         jPanel3.add(radioAdvance);
 
-        jPanel1.add(jPanel3, new java.awt.GridBagConstraints());
+        btnGroupQuery.add(jRadioButton1);
+        jRadioButton1.setText("Tuỳ chọn");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jRadioButton1);
+
+        jPanel1.add(jPanel3);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Chọn câu truy vấn"));
+        jPanel4.setMaximumSize(new java.awt.Dimension(2147483647, 115));
+        jPanel4.setMinimumSize(new java.awt.Dimension(512, 115));
+        jPanel4.setPreferredSize(new java.awt.Dimension(512, 115));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        queryCombobox.setMaximumSize(new java.awt.Dimension(300, 20));
-        queryCombobox.setMinimumSize(new java.awt.Dimension(300, 20));
-        queryCombobox.setPreferredSize(new java.awt.Dimension(300, 20));
+        queryCombobox.setMaximumSize(new java.awt.Dimension(500, 20));
+        queryCombobox.setMinimumSize(new java.awt.Dimension(500, 20));
+        queryCombobox.setPreferredSize(new java.awt.Dimension(500, 20));
         queryCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 queryComboboxActionPerformed(evt);
             }
         });
-        jPanel4.add(queryCombobox, new java.awt.GridBagConstraints());
-
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 400;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        jPanel1.add(jPanel4, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 15);
+        jPanel4.add(queryCombobox, gridBagConstraints);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+        jPanel1.add(jPanel4);
 
-        jPanel5.setLayout(new java.awt.GridLayout(1, 2));
+        jPanel5.add(jPanel1, java.awt.BorderLayout.NORTH);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Query"));
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
@@ -167,7 +215,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel6.add(jPanel8);
 
-        jPanel5.add(jPanel6);
+        jSplitPane1.setLeftComponent(jPanel6);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Result"));
         jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.Y_AXIS));
@@ -186,13 +234,33 @@ public class GUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setRowHeight(20);
         tableQuery.setViewportView(jTable1);
 
         jPanel7.add(tableQuery);
 
-        jPanel5.add(jPanel7);
+        jSplitPane1.setRightComponent(jPanel7);
 
-        getContentPane().add(jPanel5, java.awt.BorderLayout.CENTER);
+        jPanel5.add(jSplitPane1, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Sinh dữ liệu");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Thống kê");
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,20 +305,95 @@ public class GUI extends javax.swing.JFrame {
         btnQueryClicked();
     }//GEN-LAST:event_btnQueryActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        queryTypeSeletion();
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        repositorySelection();
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        GenerateDialog dialog = new GenerateDialog(this, rootPaneCheckingEnabled);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void repositorySelection() {
-        
+        String repositoryId = null;
+        if (radio100.isSelected()) {
+            repositoryId = Setting.REPO_NAME_100_200;
+        } else if (radio5k.isSelected()) {
+            repositoryId = Setting.REPO_NAME_5k_7k;
+        } else if (radio60k.isSelected()) {
+            repositoryId = Setting.REPO_NAME_60k_80k;
+        } else if (radio1M.isSelected()) {
+            repositoryId = Setting.REPO_NAME_1m_2m;
+        } else {
+            repositoryId = Setting.REPO_NAME_15m_17m;
+        }
+
+        System.out.println(repositoryId);
+
+        ConnectionManager.setRepository(repositoryId);
     }
-    
+
     public void queryTypeSeletion() {
-        
+        queryCombobox.setEnabled(true);
+        queryTextArea.setText("");
+        if (radioBasic.isSelected()) {
+            DefaultComboBoxModel<Map.Entry<String, String>> model = new DefaultComboBoxModel<>(basicQueries);
+            queryCombobox.setModel(model);
+        } else if (radioAdvance.isSelected()) {
+            DefaultComboBoxModel<Map.Entry<String, String>> model = new DefaultComboBoxModel<>(advanceQueries);
+            queryCombobox.setModel(model);
+        } else {
+            queryCombobox.setEnabled(false);
+            queryTextArea.setText(prefixes);
+        }
+        jTable1.setModel(new DefaultTableModel());
     }
-    
+
     public void comboboxSelection() {
-        
+        Map.Entry<String,String> entry = (Map.Entry<String, String>) queryCombobox.getSelectedItem();
+        queryTextArea.setText(entry.getValue());
     }
-    
+
     public void btnQueryClicked() {
-        
+        String sql = queryTextArea.getText();
+        try {
+            QueryResult result = QueryUtils.query(sql);
+            TableModel model = new DefaultTableModel(result.getData(), result.getHeader());
+            jTable1.setModel(model);
+            lbTime.setText("Thời gian truy vấn: " + result.getTimeExec() + " ms");
+        } catch (QueryEvaluationException e) {
+            String mess = e.getMessage();
+            JOptionPane.showMessageDialog(this, mess);
+        }
+
+    }
+
+
+    public void init() {
+        Map<String, String> basic = QueryUtils.loadData(Setting.BASIC_FILE);
+        Map<String, String> advance = QueryUtils.loadData(Setting.ADVANCE_FILE);
+
+        basicQueries = basic.entrySet().toArray(new Map.Entry[0]);
+        advanceQueries = advance.entrySet().toArray(new Map.Entry[0]);
+
+        queryCombobox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Map.Entry) {
+                    setText((String) ((Map.Entry) value).getKey());
+                }
+                return this;
+            }
+        });
     }
     /**
      * @param args the command line arguments
@@ -259,11 +402,11 @@ public class GUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -282,7 +425,9 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                GUI gui = new GUI();
+                gui.setLocationRelativeTo(null);
+                gui.setVisible(true);
             }
         });
     }
@@ -291,6 +436,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroupData;
     private javax.swing.ButtonGroup btnGroupQuery;
     private javax.swing.JButton btnQuery;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -299,10 +448,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbTime;
-    private javax.swing.JComboBox<String> queryCombobox;
+    private javax.swing.JComboBox<Map.Entry<String,String>> queryCombobox;
     private javax.swing.JTextArea queryTextArea;
     private javax.swing.JRadioButton radio100;
     private javax.swing.JRadioButton radio1M;

@@ -28,7 +28,7 @@ public class ConnectionManager {
             LoggerFactory.getLogger(ConnectionManager.class);
 
     private static RepositoryManager repositoryManager;
-    private static String repositoryId;
+    public static String repositoryId;
 
 
     /**

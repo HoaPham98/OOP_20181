@@ -37,8 +37,12 @@ public class LocationGenerator extends BaseGenerator<Location> {
 
                 Model model = createModel(location);
 
-                conn.add(model);
+                if (model.size() >= MAX_STATMENT){
+                    conn.add(model);
+                    builder = new ModelBuilder();
+                }
             }
+            conn.add(builder.build());
             conn.commit();
             long end = System.currentTimeMillis();
             long time = end - start;
@@ -50,7 +54,6 @@ public class LocationGenerator extends BaseGenerator<Location> {
 
     @Override
     public Model createModel(Location item) {
-        builder = new ModelBuilder();
         builder.subject(ENT.NAMESPACE + item.getId())
                 .add(RDF.TYPE, ENT.LOCATION)
                 .add(PROP.NAME, item.getName())
